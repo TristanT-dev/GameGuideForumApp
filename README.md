@@ -71,7 +71,7 @@
 
     Potential Features:
 
-    - use cload infrastructure (virtual machines) to host the databases that store the secure information
+    - use cloud infrastructure (virtual machines) to host the databases that store the secure information
     - Before accessing the internal resources user have to connect to a remote access VPN
     - Once the user is authenticated they can use the application to pull data from the databases
     - Design a GUI to display various types of information. For example, a police officer searching up a license plate is presented with information on the vehicle.
