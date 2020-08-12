@@ -13,12 +13,9 @@ This project will consist of a website that enables gamers to create and share i
 
 ### Game Guide Creation Tool
 
-This tool will allow authorized members to create guides for games. This implies there will be multiple types of account authorization, such as a member must first receive guide creation permissions in order to create a guide. Guides will consist of text, images and embedded videos. Additionally, a guide can later be edited by the owner. Users of the website will also be able rate the quality of a guide and post comments or questions. 
+This tool will allow authorized members to create guides for games. This implies there will be multiple types of account authorization, such as a member must first receive guide creation permissions in order to create a guide. Guides will consist of text, images and embedded videos. In order to enhance this feature we plan to also use [Blizzard's](https://develop.battle.net/documentation) APIs to help support the creation of game guides by allowing users to access information from Blizzard's games. For example, providing the ability to retrieve item information from their games. Additionally, a guide can later be edited by the owner. Users of the website will also be able rate the quality of a guide and post comments or questions. 
 
 ### Moderator Curated Forum Tool
 
-This tool will allow members of the website to create general or specialized threads to facilitate online discussions where members can hold conversations in the form of posted messages.  After a thread is created, moderators can check to see if it is following the specified guidelines of the forum rules.  Members can also report any thread directly to moderators if any unruly actions occur in the comments or in the original post.
+This tool will allow members of the website to create general or specialized threads to facilitate online discussions where members can hold conversations in the form of posted messages. The forum tool will also support use of [Blizzard's](https://develop.battle.net/documentation) APIs such that users can easily access information from their games when creating their messages such as putting images / icons in the text body of messages. After a thread is created, moderators can check to see if it is following the specified guidelines of the forum rules.  Members can also report any thread directly to moderators if any unruly actions occur in the comments or in the original post.
 
-### Potential API Use
-
-We are currently looking into leveraging [Blizzard's](https://develop.battle.net/documentation) APIs such that users would be able to easily access information from their games. For example, when creating a guide the user could get information on spells, items, icons, etc and post them in their guide. At this time we are still exploring this functionality.
