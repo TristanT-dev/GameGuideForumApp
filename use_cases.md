@@ -189,5 +189,76 @@ The user must have created an account with the website and be logged in. The use
 
 After a user has successfully edited a comment on a game guide the database will be updated appropriately. Furthermore, the edited comment will also be visible by other users of the website when they visit the page for the associated game guide. 
 
+---
+
+### Creating Forum Thread (Done by Tristan)
+
+### Actor(User)
+User with an account on the website.
+
+### Pre-conditions
+The member is logged on to the website.
+
+### Main Flow
+1. The member clicks on the “Discussion” tab in the navigation bar on the website
+2. The system shows list of possible thread types the user can create(Specialized/specific, General)
+3. The member clicks on the thread type they would like to create.
+4. The system displays UI for thread creation as a Form(Title, text body, flair)
+5. The member fills in the fields on the form.
+6. The member clicks the “Submit” button to create a thread
+7. The system automatically checks the contents of the thread to see if it contains anything that would be against the Terms of Service(words, turn of phrase detection, spam).
+8. The system successfully saves the thread to the database.
+
+### Alternate Flows
+* If any of the fields in the form are not filled out:
+  - After step 6, the system will inform the member that the thread cannot be created unless all fields are filled, submission will not be possible until satisfied 
+
+* If the member attempts to close the tab or navigate away before clicking the “Submit” button:
+  - The system will prevent the member from navigating away with a prompt to the member: 
+“Changes have not been saved, are you sure you want to leave this page?”
+  - The member will choose “Yes” to successfully navigate away or “No” to finish creating the thread.
+
+* If the system determines the submission does not abide by the Terms of Service:
+  - After Step 7, the system will automatically delete the thread and usher the member a warning about the contents they are allowed to post.
+
+### Post-Conditions
+After a member has successfully submitted a new thread, it will become available to view and comment on in the “new” section on the main forum page.
+
+---
+
+### Reporting a Forum Thread (Done by Tristan)
+
+### Actor(User)
+A user that has an activated account on the website.
+
+### Pre-conditions
+A member is logged on to the website and has navigated to the specific thread that is to be reported.
+
+### Main Flow
+1. The member clicks the “Report” button under the title of the thread.
+2. The system loads the UI and displays all reasons for reporting that thread, (“It breaks ToS”, “Spam”, “Misinformation”, “Abusive and/or Harassment”, “Other”), as well as a “Cancel” button
+3. The member selects an option to report and clicks the “Submit” button to send the submission to a mod for revision.
+4. The system successfully sends the message to the member stating their submission has been sent, the system loads the UI to display options for “Blocking”  the original poster.
+5. The member selects their option, the report UI disappears.
+
+### Alternate Flow 
+* If the user decides to click “Cancel”: 
+  - At Step 2, The system will close the UI displaying report options.
+
+* If the user selects “Other”:
+  - At Step 2,  the system will create a textbox for the user to type in any other non-specified reason for the report Up to 200 characters max.  Will move on to Step 3 afterwards.
+
+* If the member decides to block the Original Poster:
+  - After Step 4, The original poster’s profile, comments, threads and guides will be invisible to the member.
+
+### Post Conditions
+After selecting the option for whether or not to block the original poster, the system redirects the member back to the Landing Page of the Forums tab.
+
+---
+
+
+
+
+
 
 
