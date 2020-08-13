@@ -191,7 +191,7 @@ After a user has successfully edited a comment on a game guide the database will
 
 ---
 
-### Creating Forum Thread (Done by Tristan)
+## Creating Forum Thread (Done by Tristan)
 
 ### Actor(User)
 User with an account on the website.
@@ -226,7 +226,7 @@ After a member has successfully submitted a new thread, it will become available
 
 ---
 
-### Reporting a Forum Thread (Done by Tristan)
+## Reporting a Forum Thread (Done by Tristan)
 
 ### Actor(User)
 A user that has an activated account on the website.
