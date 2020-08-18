@@ -1,1 +1,11 @@
+## Back End
 
+The website will be served by an HTTP [Node.js](https://nodejs.org/) server hosted by [Heroku](https://www.heroku.com/). This JavaScript environment is utilized for being able to handle many requests, REST API, and reading data from database and API. [Express](https://expressjs.com/) web application framework will be used to handle routing, authentication and parsing body and query strings easier. Additional middleware used for Node.js includes [passport.js](http://www.passportjs.org/) and [bcrypt.js](https://www.npmjs.com/package/bcryptjs) to support user authentication and security features. [MongoDB](https://www.mongodb.com/) database will be used to store [JSON](https://www.json.org/json-en.html) formatted documents and because it offers a wide variety of query options.
+
+## Front End
+
+The website will use the [Angular](https://angular.io/)  platform / framework alongside [Angular CLI](https://cli.angular.io/).  This framework features client-side rendering, thus offering advantages with lazy loading, easy deployment and no full page load.  Additionally, Angular has an encapsulated component-based architecture structure, which enables us to unit-test easier, re-use components across different parts and maintain implementations easier.  [Bootstrap](https://getbootstrap.com/) v4 framework will be used for a fast, responsive and stylish user-experience. As a result, [JQuery](https://jquery.com/) will also be required as Bootstrap requires the use of this technology.
+
+## Developing Tools
+
+The website will be developed using [Visual Studio Code](https://code.visualstudio.com/) with [Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense) and [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extensions. Postman will also be used to compose and send HTTP requests, as well as building, testing and managing APIs. Furthermore, testing will also be done on [Chrome](https://developers.google.com/web/tools/chrome-devtools) and [FireFox](https://developer.mozilla.org/en-US/docs/Tools) browsers using their respective developer / debugging tools.
