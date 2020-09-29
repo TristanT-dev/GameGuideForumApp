@@ -106,6 +106,18 @@ app.put("/api/game-guides/edit/:id/add-comment", (req, res) => {
     })
 });
 
+// Update a comment for a gameGuide
+app.put("/api/game-guides/edit-comment/:id", (req, res) => {
+  // Call the manager method
+  m.gameGuideEditComment(req.params.id, req.body)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch(() => {
+      res.status(404).json({ "message": "Resource not found" });
+    })
+});
+
 // forum thread requests *******************************************************************
 
 // Get all (sorted)
@@ -161,6 +173,18 @@ app.post("/api/forum-threads/add", (req, res) => {
 app.put("/api/forum-threads/edit/:id/add-post", (req, res) => {
   // Call the manager method
   m.forumThreadAddPost(req.params.id, req.body)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch(() => {
+      res.status(404).json({ "message": "Resource not found" });
+    })
+});
+
+// Update a post on a thread
+app.put("/api/forum-threads/edit-post/:id", (req, res) => {
+  // Call the manager method
+  m.forumThreadEditPost(req.params.id, req.body)
     .then((data) => {
       res.json(data);
     })

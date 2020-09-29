@@ -99,20 +99,166 @@ module.exports = function () {
 
        // get one, by object identifier
 
-    gameGuideGetById: function (gameGuideId) {
+      gameGuideGetById: function (gameGuideId) {
+          return new Promise(function (resolve, reject) {
+    
+            // Find one specific document
+            GameGuide.findById(gameGuideId)
+              .exec((error, guide) => {
+                if (error) {
+                  // Find/match is not found
+                  return reject(error.message);
+                }
+                // Check for an item
+                if (guide) {
+                  // Found, one object will be returned
+                  return resolve(guide);
+                } else {
+                  return reject('Not found');
+                }
+              });
+          })
+        },
+
+      // get one (or some) gameGuides, by regex in "shortTitle" field
+
+      gameGuideGetByTitle: async function (text) {
+
+          // URL decode the incoming value
+          text = decodeURIComponent(text);
+    
+          // Attempt to find in the "shortTitle" field, case-insensitive
+          let results = await GameGuide.find({ shortTitle: { $regex: text, $options: "i" } });
+          // This will find zero or more
+          return results;
+        },
+
+      // add new gameGuide
+
+      gameGuideAdd: function (newGuide) {
+          return new Promise(function (resolve, reject) {
+
+              let date = new Date();
+              newGuide.dateCreated = date;
+
+              GameGuide.create(newGuide, (error, guide) => {
+                  if(error) {
+                      // Cannot add item
+                      return reject(error.message);
+                  }
+                  //Added object will be returned
+                  return resolve(guide);
+              });
+
+          })
+      },
+
+      // edit a particular gameGuide
+
+      gameGuideEdit: async function (guideId, updatedGuide) {
+
+          let  oldGuide = await GameGuide.findById(guideId);
+
+          if(oldGuide){
+
+              // update old version
+              oldGuide.fullTitle = updatedGuide.fullTitle;
+              oldGuide.shortTitle = updatedGuide.shortTitle;
+              oldGuide.patch = updatedGuide.patch;
+              oldGuide.description = updatedGuide.description;
+              oldGuide.content = updatedGuide.content;
+              oldGuide.linkYouTube = updatedGuide.linkYouTube; 
+      
+              oldGuide.dateUpdated = new Date();
+              
+              await oldGuide.save();
+              return oldGuide;
+          }
+          else {
+              throw "Not found";
+          }
+      },
+
+      // update existing gameGuide - add a new comment
+
+      gameGuideAddComment: async function (guideId, newComment){
+          
+          // Attempt to locate the existing document
+          let gameGuide = await GameGuide.findById(guideId);
+
+          newComment.dateCreated = new Date();
+
+          if (gameGuide) {
+              // Add the new subdocument and save
+              gameGuide.comments.push(newComment);
+              await gameGuide.save();
+              return gameGuide;
+            }
+            else {
+              // Uh oh, "throw" an error
+              throw "Not found";
+            }
+
+      },
+
+      // edit a comment for a gameGuide
+      gameGuideEditComment: async function (commentId, updatedComment) {
+
+        // Attempt to locate the existing document that has the desired comment
+          let gameGuide = await GameGuide.findOne({ "comments._id": commentId });
+      
+          if (gameGuide) {
+            // Attempt to locate the comment
+            let comment = gameGuide.comments.id(commentId);
+            // update the comment
+            comment.content = updatedComment.content;
+
+            await gameGuide.save();
+            // Send the entire document back to the requestor
+            return gameGuide;
+          }
+          else {
+            // Uh oh, "throw" an error
+            throw "Not found";
+          }
+      },
+
+      // forum thread requests *******************************************************************
+
+      // get all forum threads (sorted) by likes
+
+      forumThreadGetAll: function () {
+        return new Promise((resolve, reject) => {
+        
+          ForumThread.find()
+            .sort({ likes: 'desc' })
+            .exec((error, forumThreads) => {
+              if (error) {
+                // Query error
+                return reject(error.message);
+              }
+              // Found, a collection will be returned
+              return resolve(forumThreads);
+            });
+        });
+      },
+
+      // get a forum thread by object id
+
+      forumThreadGetById: function (forumThreadId) {
         return new Promise(function (resolve, reject) {
-  
+
           // Find one specific document
-          GameGuide.findById(gameGuideId)
-            .exec((error, guide) => {
+          ForumThread.findById(forumThreadId)
+            .exec((error, forumThread) => {
               if (error) {
                 // Find/match is not found
                 return reject(error.message);
               }
               // Check for an item
-              if (guide) {
+              if (forumThread) {
                 // Found, one object will be returned
-                return resolve(guide);
+                return resolve(forumThread);
               } else {
                 return reject('Not found');
               }
@@ -120,143 +266,20 @@ module.exports = function () {
         })
       },
 
-      // get one (or some) gameGuides, by regex in "shortTitle" field
-
-    gameGuideGetByTitle: async function (text) {
-
-        // URL decode the incoming value
-        text = decodeURIComponent(text);
-  
-        // Attempt to find in the "shortTitle" field, case-insensitive
-        let results = await GameGuide.find({ shortTitle: { $regex: text, $options: "i" } });
-        // This will find zero or more
-        return results;
-      },
-
-    // add new gameGuide
-
-    gameGuideAdd: function (newGuide) {
-        return new Promise(function (resolve, reject) {
-
-            let date = new Date();
-            newGuide.dateCreated = date;
-
-            GameGuide.create(newGuide, (error, guide) => {
-                if(error) {
-                    // Cannot add item
-                    return reject(error.message);
-                }
-                //Added object will be returned
-                return resolve(guide);
-            });
-
-        })
-    },
-
-    // edit a particular gameGuide
-
-    gameGuideEdit: async function (guideId, updatedGuide) {
-
-        let  oldGuide = await GameGuide.findById(guideId);
-
-        if(oldGuide){
-
-            // update old version
-            oldGuide.fullTitle = updatedGuide.fullTitle;
-            oldGuide.shortTitle = updatedGuide.shortTitle;
-            oldGuide.patch = updatedGuide.patch;
-            oldGuide.description = updatedGuide.description;
-            oldGuide.content = updatedGuide.content;
-            oldGuide.linkYouTube = updatedGuide.linkYouTube; 
-    
-            oldGuide.dateUpdated = new Date();
-            
-            await oldGuide.save();
-            return oldGuide;
-        }
-        else {
-            throw "Not found";
-        }
-    },
-
-    // update existing gameGuide - add a new comment
-
-    gameGuideAddComment: async function (guideId, newComment){
-        
-        // Attempt to locate the existing document
-        let gameGuide = await GameGuide.findById(guideId);
-
-        newComment.dateCreated = new Date();
-
-        if (gameGuide) {
-            // Add the new subdocument and save
-            gameGuide.comments.push(newComment);
-            await gameGuide.save();
-            return gameGuide;
-          }
-          else {
-            // Uh oh, "throw" an error
-            throw "Not found";
-          }
-
-    },
-
-    // forum thread requests *******************************************************************
-
-    // get all forum threads (sorted) by likes
-
-    forumThreadGetAll: function () {
-      return new Promise((resolve, reject) => {
-      
-        ForumThread.find()
-          .sort({ likes: 'desc' })
-          .exec((error, forumThreads) => {
-            if (error) {
-              // Query error
-              return reject(error.message);
-            }
-            // Found, a collection will be returned
-            return resolve(forumThreads);
-          });
-      });
-    },
-
-    // get a forum thread by object id
-
-    forumThreadGetById: function (forumThreadId) {
-      return new Promise(function (resolve, reject) {
-
-        // Find one specific document
-        ForumThread.findById(forumThreadId)
-          .exec((error, forumThread) => {
-            if (error) {
-              // Find/match is not found
-              return reject(error.message);
-            }
-            // Check for an item
-            if (forumThread) {
-              // Found, one object will be returned
-              return resolve(forumThread);
-            } else {
-              return reject('Not found');
-            }
-          });
-      })
-    },
-
       // get one (or some) forumThreads, by regex in "subject" field
 
       forumThreadGetBySubject: async function (text) {
 
         // URL decode the incoming value
         text = decodeURIComponent(text);
-  
+
         // Attempt to find in the "subject" field, case-insensitive
         let results = await ForumThread.find({ subject: { $regex: text, $options: "i" } });
         // This will find zero or more
         return results;
       },
 
+      // add a new forum thread
 
       forumThreadAdd: function (newForumThread) {
         return new Promise(function (resolve, reject) {
@@ -276,27 +299,48 @@ module.exports = function () {
         })
       },
 
-     // update existing forumThread - add a new 
+      // update existing forumThread - add a new 
 
-     forumThreadAddPost: async function (forumThreadId, newPost){
-        
-      // Attempt to locate the existing document
-      let forumThread = await ForumThread.findById(forumThreadId);
+      forumThreadAddPost: async function (forumThreadId, newPost){
+            
+          // Attempt to locate the existing document
+          let forumThread = await ForumThread.findById(forumThreadId);
 
-      newPost.dateCreated = new Date();
+          newPost.dateCreated = new Date();
 
-      if (forumThread) {
-          // Add the new subdocument and save
-          forumThread.posts.push(newPost);
-          await forumThread.save();
-          return forumThread;
-        }
-        else {
-          // Uh oh, "throw" an error
-          throw "Not found";
-        }
+          if (forumThread) {
+              // Add the new subdocument and save
+              forumThread.posts.push(newPost);
+              await forumThread.save();
+              return forumThread;
+            }
+            else {
+              // Uh oh, "throw" an error
+              throw "Not found";
+            }
 
-  },
+      },
+
+      // edit a particular post in a forumThread
+      forumThreadEditPost: async function (postId, updatedPost) {
+
+        // Attempt to locate the existing document that has the desired comment
+          let forumThread = await ForumThread.findOne({ "posts._id": postId });
+          if (forumThread) {
+            // Attempt to locate the post
+            let post = forumThread.posts.id(postId);
+            // update the post
+            post.content = updatedPost.content;
+
+            await forumThread.save();
+            // Send the entire document back to the requestor
+            return forumThread;
+          }
+          else {
+            // Uh oh, "throw" an error
+            throw "Not found";
+          }
+      },
 
 
     
