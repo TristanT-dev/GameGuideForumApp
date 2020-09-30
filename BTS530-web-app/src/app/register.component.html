@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-md-8">
+      <h3>Register Placeholder</h3>
+    
+      <form (ngSubmit)='accountSave()' #f='ngForm'>
+  
+        <div class="form-group">
+          <label class="control-label" for="username">Username:</label>
+          <input class="form-control" id="username" name="username" [(ngModel)]="newRegisterForm.username" required
+            #username="ngModel" autofocus>
+  
+          <!-- Validation error area -->
+          <!-- Single condition... -->
+          <!-- <div [hidden]="name.valid || name.pristine" class='alert alert-danger'> -->
+          <!-- Multiple conditions... -->
+          <div *ngIf='username.invalid && (username.dirty || username.touched)' class='alert alert-danger'>
+            <!-- The code below is situation-dependent - think before coding -->
+            <div *ngIf='username.errors?.required'>Username is required</div>
+          </div>
+          
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="password">Password:</label>
+            <input class="form-control" type="password" id="password" name="password" [(ngModel)]="newRegisterForm.password" required
+              #password="ngModel">
+    
+            <!-- Validation error area -->
+            <div *ngIf='password.invalid && (password.dirty || password.touched)' class='alert alert-danger'>
+              <div *ngIf='password.errors?.required'>Password is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="passwordconfirm">Password Confirm:</label>
+            <input class="form-control"  type="password" id="passwordconfirm" name="passwordconfirm" [(ngModel)]="newRegisterForm.password2" required
+              #passwordconfirm="ngModel">
+    
+            <!-- Validation error area -->
+            <div *ngIf='passwordconfirm.invalid && (passwordconfirm.dirty || passwordconfirm.touched)' class='alert alert-danger'>
+              <div *ngIf='passwordconfirm.errors?.required'>Password Confirm is required</div>
+            </div>
+          </div>
+  
+        
+
+        
+
+        
+
+
+        
+
+      
+  
+        <button class="btn btn-primary" type="submit" [disabled]="!f.form.valid">Save</button>&nbsp;
+        <a routerLink="/home" class="btn btn-default">Back to home</a>
+  
+      </form>
+    </div>
+  </div>
