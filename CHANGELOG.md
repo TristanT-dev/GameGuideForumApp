@@ -30,4 +30,3 @@ All notable changes to this project will be documented in this file.
 ### **Changed**
 - Merged [webapiworking](https://github.com/SenecaCollegeBTSProjects/Group_20/tree/webapiworking/BTS530-web-api) into master.
 
-* Added a CHANGELOG.md file following the same structure as the one in the Angular repository. [#4](https://github.com/SenecaCollegeBTSProjects/Group_20/issues/4#issue-700682924)
