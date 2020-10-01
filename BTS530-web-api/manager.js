@@ -3,6 +3,7 @@
 // Data service operations setup
 
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
@@ -71,11 +72,65 @@ module.exports = function () {
             console.log('Connection to the database was successful');
             GameGuide = db.model("gameGuides", gameGuideSchema, "gameGuides");
             ForumThread = db.model("forumThreads", threadSchema, "forumThreads");
+            UserAccount = db.model("userAccounts", userAccountSchema, "userAccounts");
            
             resolve();
           });
         });
       },
+
+
+
+      // userAccount requests ************************************************************
+
+      // register a new user account
+
+      userAccountsRegister: function (newAccount) {
+        return new Promise(function (resolve, reject) {
+            
+            let date = new Date();
+            newAccount.dateCreated = date;
+
+            var salt = bcrypt.genSaltSync(10);
+            var hash = bcrypt.hashSync(newAccount.password, salt);
+            
+            newAccount.password = hash;
+            console.log(newAccount.username);
+            UserAccount.create(newAccount, (error, Account) => {
+                if(error) {
+                    // Cannot add item
+                    return reject(error.message);
+                }
+                //Added object will be returned
+                return resolve(Account);
+            });
+
+        });
+      },
+
+      // login a user account
+
+      userAccountsLogin: function (credentials) {
+        return new Promise((resolve, reject) => {
+          
+          UserAccount.findOne({username: credentials.username})
+            .exec((error, result) => {
+              if(result){
+                let isPasswordMatch = bcrypt.compareSync(credentials.password, result.password);
+                if(isPasswordMatch){
+                  return resolve();
+                }else{
+                  return reject("Username / Password is incorrect");
+                }
+              }else{
+                return reject("Username / Password is incorrect");
+              }
+            });
+          });
+      },
+
+      
+
 
       // gameGuide requests **************************************************************
 
@@ -299,7 +354,7 @@ module.exports = function () {
         })
       },
 
-      // update existing forumThread - add a new 
+      // update existing forumThread - add a new post
 
       forumThreadAddPost: async function (forumThreadId, newPost){
             
