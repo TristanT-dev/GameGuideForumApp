@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from "rxjs/operators";
 
-import { ApiUserAccount, Credentials } from "./data-model-classes";
+import { ApiUserAccount } from "./data-model-classes";
 
 @Injectable({
   providedIn: 'root'
@@ -48,10 +48,10 @@ export class DataModelManagerService {
       );
   }
 
-  apiUserLogin(credentials: Credentials): Observable<any> {
+  /*apiUserLogin(credentials: Credentials): Observable<any> {
     console.log(credentials);
     return this.http.post<any>(`${this.urlApi}/user-accounts/login`, credentials, this.httpOptions);
-  }
+  }*/
 
 
 

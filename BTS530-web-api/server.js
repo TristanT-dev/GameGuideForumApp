@@ -82,12 +82,12 @@ app.get("/", (req,res) => {
 // ***************************************************************************
 // Requests to handle user account tasks
 
-/*
+
 // Get info about me; it will return the token contents
 app.get("/api/useraccounts/me", passport.authenticate('jwt', { session: false }), (req, res) => {
   // Return the token contents
   res.json({ "message": "Token contents", token: req.user });
-});*/
+});
 
 // Get all (for dev testing only; DISABLE or PROTECT before deployment!)
 // (Maybe make it available only to requests that have the "UserAccountManager" role)
@@ -151,6 +151,7 @@ app.post("/api/user-accounts/login", (req, res) => {
   m.userAccountsLogin(req.body)
     .then((data) => {
 
+      
       // Calculate an expiry time...
       // There are 86400 seconds in a day
       // Assume a token lifetime of 14 days
@@ -163,22 +164,27 @@ app.post("/api/user-accounts/login", (req, res) => {
       // Properties are defined here...
       // https://tools.ietf.org/html/rfc7519
       var payload = {
-        iss: 'useraccounts.example.com',
-        exp: exp,
-        //_id: data._id,
-        //sub: data.username,
-        //email: data.username,
-        //name: data.fullName,
-        //roles: data.roles,
-        //claims: data.claims
-        // Can add more if required
+      iss: 'useraccounts.example.com',
+      exp: exp
+      //_id: data._id,
+      //sub: data.username,
+      //email: data.username,
+      //name: data.fullName,
+      //roles: data.roles,
+      //claims: data.claims
+      // Can add more if required
       };
+      
       var token = jwt.sign(payload, jwtOptions.secretOrKey);
       // Return the result
-      res.json({ "message": "Login was successful", token: token });
+      res.json({ "loginStatus": true, token: token });
+      
 
-    }).catch((msg) => {
-      res.status(400).json({ "message": msg });
+    }).catch((status) => {
+      token = "";
+      //res.status(400).json({ "message": msg });
+      //res.json({"message": "Login has failed, invalid username or password"});
+      res.json({ "loginStatus": status, token: token });
     });
 });
 

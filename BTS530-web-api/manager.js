@@ -118,12 +118,12 @@ module.exports = function () {
               if(result){
                 let isPasswordMatch = bcrypt.compareSync(credentials.password, result.password);
                 if(isPasswordMatch){
-                  return resolve();
+                  return resolve(result);
                 }else{
-                  return reject("Username / Password is incorrect");
+                  return reject(false);
                 }
               }else{
-                return reject("Username / Password is incorrect");
+                return reject(false);
               }
             });
           });
