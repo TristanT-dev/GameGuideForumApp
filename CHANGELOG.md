@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [0.0.2] - 2020-09-30
+## [0.0.2] - 2020-10-07
 
 ### **Changed**
 - Failed login now returns an error message instead of generating an error. 
