@@ -6,6 +6,11 @@ All notable changes to this project will be documented in this file.
 ## [0.0.2] - 2020-09-30
 
 ### **Changed**
+- Failed login now returns an error message instead of generating an error. 
+
+## [0.0.2] - 2020-09-30
+
+### **Changed**
 - Merged [webapiworking](https://github.com/SenecaCollegeBTSProjects/Group_20/tree/webapiworking/BTS530-web-api) into master.
 
 
