@@ -2,7 +2,7 @@
     <div class="col-md-8">
       <h3>Login Placeholder</h3>
     
-      <form (ngSubmit)='loginAttempt()' #f='ngForm'>
+      <form (ngSubmit)='onSubmit()' #f='ngForm'>
   
         <div class="form-group">
           <label class="control-label" for="username">Username:</label>
@@ -33,8 +33,22 @@
 
         <button class="btn btn-primary" type="submit" [disabled]="!f.form.valid">Login</button>&nbsp;
         <a routerLink="/home" class="btn btn-default">Back to home</a>
+
+        
   
       </form>
+
+      <div class="loginMessage">
+        <p  class='alert alert-danger' *ngIf="this.loginStatus === false">
+          Login Failed: invalid username and or password
+        </p>
+        <p   class='alert alert-success' *ngIf="this.loginStatus === true">
+          Login Success!
+        </p>
+      </div>
+
     </div>
   </div>
+
+  
 
