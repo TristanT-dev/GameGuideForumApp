@@ -2,10 +2,12 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-## [0.0.0] - 2020-09-13
 
-### **Added**
-- CHANGELOG.md file 
+## [0.0.2] - 2020-09-30
+
+### **Changed**
+- Merged [webapiworking](https://github.com/SenecaCollegeBTSProjects/Group_20/tree/webapiworking/BTS530-web-api) into master.
+
 
 ## [0.0.1] - 2020-09-29
 
@@ -24,9 +26,10 @@ All notable changes to this project will be documented in this file.
 - Started versioning at 0.0.1 to help keep things up-to-date.
 - Fix phrasing and spelling in **use_cases.md**.
 
+## [0.0.0] - 2020-09-13
 
-## [0.0.2] - 2020-09-30
+### **Added**
+- CHANGELOG.md file 
 
-### **Changed**
-- Merged [webapiworking](https://github.com/SenecaCollegeBTSProjects/Group_20/tree/webapiworking/BTS530-web-api) into master.
+
 
