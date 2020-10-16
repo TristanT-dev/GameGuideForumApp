@@ -19,7 +19,7 @@ All notable changes to this project will be documented in this file.
 
 ## **Changed**
 - data-class data-managaer.ts to reflect addition of new components
--changed home.html
+- changed home.html
 
 
 ## [0.0.2] - 2020-10-07
