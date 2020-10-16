@@ -3,6 +3,25 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.03] - 2020-10-16
+
+### **Added**
+- Created a branch [sprint2working](https://github.com/SenecaCollegeBTSProjects/Group_20/tree/sprint2working) from master by [@sunworks-code](https://github.com/sunworks-code)
+#### Game Guide List component 
+- search bar that finds game guide by short title
+- displays all game guides in the database
+
+#### Game Guide Detail component
+- displays description and content 
+#### Header component
+#### Navigation Bar component
+- routing to other components
+
+## **Changed**
+- data-class data-managaer.ts to reflect addition of new components
+-changed home.html
+
+
 ## [0.0.2] - 2020-10-07
 
 ### **Changed**
