@@ -4,7 +4,9 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from "rxjs/operators";
 
-import { ApiUserAccount } from "./data-model-classes";
+import { ApiUserAccount, ApiGameGuide, ApiGuideComment } from "./data-model-classes";
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +55,18 @@ export class DataModelManagerService {
     return this.http.post<any>(`${this.urlApi}/user-accounts/login`, credentials, this.httpOptions);
   }*/
 
+  apiGameGuideGetAll(): Observable<ApiGameGuide[]> {
+    return this.http.get<ApiGameGuide[]>(`${this.urlApi}/game-guides/all`);
+  }
+
+  apiGameGuideGetSome(word: string): Observable<ApiGameGuide[]> {
+    word = encodeURIComponent(word);
+    return this.http.get<ApiGameGuide[]>(`${this.urlApi}/game-guides/by-short-title/${word}`);
+  }
+
+  apiGameGuideGetById(id: string): Observable<ApiGameGuide> {
+    return this.http.get<ApiGameGuide>(`${this.urlApi}/game-guides/by-id/${id}`);
+  }
 
 
 

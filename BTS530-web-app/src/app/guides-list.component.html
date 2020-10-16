@@ -1,0 +1,34 @@
+<div class="row">
+    <p>&nbsp;</p>
+    <label for="search"><strong>List of Game Guides - search by short title...</strong></label>
+    <input type="search" id="search" name="search"  minlength="3" maxlength="100" (click)="clear()" (ngModelChange)="doSearch()" [(ngModel)]="searchTerm">
+    <div *ngIf='searchTerm.length<3'>Search title must be at least 3 characters</div>
+    
+</div>
+
+<p>&nbsp;</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Short Title</th>
+      <th>Description</th>
+      <th>Author</th>
+      <th>Rating</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let g of guides'>
+      <td>{{ g.shortTitle }}</td>
+      <td>{{ g.description }}</td>
+      <td>{{ g.author }}</td>
+      <td>{{ g.rating }}</td>
+      <td>
+        <a routerLink = "/game-guides/detail/{{g._id}}" class="btn btn-default">View</a>
+      </td>
+    </tr>
+    <tr *ngIf='guides == null || guides.length == 0'>
+        <td>No Results</td>
+    </tr>
+  </tbody>
+</table>

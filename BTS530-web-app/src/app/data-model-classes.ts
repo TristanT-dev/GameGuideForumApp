@@ -46,3 +46,71 @@ export class Credentials {
     password: string;
 
 }
+
+export class ApiGuideComment {
+    
+
+    constructor(){
+        let date = new Date();
+
+        this.content = "";
+        this.author = "";
+        this.like = 0;
+        this.dislikes = 0;
+    }
+
+    _id?: string;
+    content: string;
+    author: string;
+    like?: number;
+    dislikes?: number;
+
+}
+
+export class ApiGameGuide {
+
+
+    constructor(){
+        let date = new Date();
+
+        this.fullTitle = "";
+        this.shortTitle = "";
+        this.languageCode = "en";
+        this.category = "";
+        this.patch = "1.12";
+        this.keywords = [];
+        this.votes = [];
+        this.rating = 0;
+        this.description = "";
+        this.content = "";
+        this.status = "";
+        this.linkYouTube = "";
+        this.images = [];
+        this.author = "";
+        this.dateCreated = date.toISOString();
+        this.dateUpdated = date.toISOString();
+        this.comments = [];
+
+    }
+
+    _id?: string;
+    fullTitle: string;
+    shortTitle: string;
+    languageCode: string;
+    category: string;
+    patch?: string;
+    keywords?: string[];
+    votes?: number[];
+    rating?: number;
+    description: string;
+    content: string;
+    status?: string;
+    linkYouTube?: string;
+    images?: string[];
+    author: string;
+    dateCreated?: string;
+    dateUpdated?: string;
+    comments: ApiGuideComment[];
+
+}
+

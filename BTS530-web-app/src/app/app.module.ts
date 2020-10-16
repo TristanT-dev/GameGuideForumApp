@@ -12,11 +12,18 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register.component';
 import { HomeComponent } from './home.component';
 import { LoginComponent } from './login.component';
+import { HeaderNavComponent } from './header-nav.component';
+import { GuidesListComponent } from './guides-list.component';
+import { ForumsListComponent } from './forums-list.component';
+import { GuideDetailComponent } from './guide-detail.component';
+
 
 import { AuthService } from './auth.service';
 import { GuardAuthService } from './guard-auth.service';
 import { InterceptTokenService } from "./intercept-token.service";
 import { DataModelManagerService } from "./data-model-manager.service";
+
+
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -27,7 +34,11 @@ export function tokenGetter() {
     AppComponent,
     RegisterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderNavComponent,
+    GuidesListComponent,
+    ForumsListComponent,
+    GuideDetailComponent
   ],
   imports: [
     BrowserModule,
