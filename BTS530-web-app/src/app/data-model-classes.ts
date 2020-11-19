@@ -114,3 +114,33 @@ export class ApiGameGuide {
 
 }
 
+export class GameGuideForm {
+
+    constructor(){
+        let date = new Date();
+
+        this.author = "";
+        this.fullTitle = "";
+        this.shortTitle = "";
+        this.description = "";
+        this.category = "";
+        this.content = "";
+    }
+
+    author: string;
+    fullTitle: string;
+    shortTitle: string;
+    description: string;
+    category: string;
+    content: string;
+
+}
+
+export class GameGuideCategories {
+    
+    constructor(){
+        this.categories = ["Leveling", "Dungeon", "Class", "PVP" ];
+    }
+
+    categories: string[];
+}

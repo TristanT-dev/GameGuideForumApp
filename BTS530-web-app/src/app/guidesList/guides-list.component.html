@@ -2,7 +2,8 @@
     <p>&nbsp;</p>
     <label for="search"><strong>List of Game Guides - search by short title...</strong></label>
     <input type="search" id="search" name="search"  minlength="3" maxlength="100" (click)="clear()" (ngModelChange)="doSearch()" [(ngModel)]="searchTerm">
-    <div *ngIf='searchTerm.length<3'>Search title must be at least 3 characters</div>
+    &nbsp;<button class="btn btn-primary" routerLink="/game-guides/add">Create New Guide</button>
+    &nbsp;&nbsp;<div *ngIf='searchTerm.length<3'>Search title must be at least 3 characters</div>
     
 </div>
 

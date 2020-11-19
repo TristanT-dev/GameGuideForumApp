@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { NgForm } from '@angular/forms';
 
-import { DataModelManagerService } from "./data-model-manager.service";
+import { DataModelManagerService } from "../data-model-manager.service";
 
-import { ApiUserAccount, RegisterForm } from "./data-model-classes";
+import { ApiUserAccount, RegisterForm } from "../data-model-classes";
 
 @Component({
   selector: 'app-register',
