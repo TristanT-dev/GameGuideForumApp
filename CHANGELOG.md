@@ -3,7 +3,24 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [0.03] - 2020-10-16
+## [0.0.4] - 2020-11-18
+
+### **Added**
+#### Game Guide Create Component
+- form for new game guide creation
+
+####  Game Guide List Component
+- button to create new game guide
+
+#### Data Model & Data Model Manager Service
+- logic to support Game Guide creation
+
+## **Changed**
+- migrated to bootstrap 4 from version 3.4
+- navigation bar component to work with bootstrap 4
+
+
+## [0.0.3] - 2020-10-16
 
 ### **Added**
 - Created a branch [sprint2working](https://github.com/SenecaCollegeBTSProjects/Group_20/tree/sprint2working) from master by [@sunworks-code](https://github.com/sunworks-code)
