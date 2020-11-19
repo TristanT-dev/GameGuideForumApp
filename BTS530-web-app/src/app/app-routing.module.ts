@@ -2,12 +2,14 @@ import { registerLocaleData } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from "./home.component";
-import { RegisterComponent } from './register.component';
-import { LoginComponent } from './login.component';
-import { GuidesListComponent } from './guides-list.component';
-import { GuideDetailComponent } from './guide-detail.component';
-import { ForumsListComponent } from './forums-list.component';
+import { HomeComponent } from "./home/home.component";
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { GuidesListComponent } from './guidesList/guides-list.component';
+import { GuideDetailComponent } from './guideDetail/guide-detail.component';
+import { ForumsListComponent } from './forumsList/forums-list.component';
+import { GuideCreateComponent } from './guideCreate/guide-create.component';
+
 
 
 const routes: Routes = [
@@ -17,6 +19,7 @@ const routes: Routes = [
   { path: 'game-guides', component: GuidesListComponent },
   { path: 'game-guides/detail/:id', component: GuideDetailComponent },
   { path: 'forums', component: ForumsListComponent },
+  { path: 'game-guides/add', component: GuideCreateComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
   
 ];

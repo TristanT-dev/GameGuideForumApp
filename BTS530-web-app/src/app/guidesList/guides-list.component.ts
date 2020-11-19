@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DataModelManagerService } from './data-model-manager.service';
-import { ApiGameGuide } from "./data-model-classes";
+import { DataModelManagerService } from '../data-model-manager.service';
+import { ApiGameGuide } from "../data-model-classes";
 
 
 @Component({

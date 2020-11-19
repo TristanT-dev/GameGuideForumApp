@@ -68,6 +68,14 @@ export class DataModelManagerService {
     return this.http.get<ApiGameGuide>(`${this.urlApi}/game-guides/by-id/${id}`);
   }
 
+  apiGameGuideAdd(newGuide: ApiGameGuide): Observable<ApiGameGuide> {
+    return this.http.post<ApiGameGuide>(`${this.urlApi}/game-guides/add`, newGuide, this.httpOptions)
+      .pipe(
+        tap((newGuide: ApiGameGuide) => console.log(`Added game guide ${newGuide.shortTitle}`)),
+        catchError(this.handleError<ApiGameGuide>('Guide add'))
+      );
+  }
+
 
 
 

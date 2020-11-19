@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { NgForm } from '@angular/forms';
 
-import { DataModelManagerService } from "./data-model-manager.service";
+import { DataModelManagerService } from "../data-model-manager.service";
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-import { AuthService } from './auth.service';
-import { Credentials } from "./data-model-classes";
+import { AuthService } from '../auth.service';
+import { Credentials } from "../data-model-classes";
 
 @Component({
   selector: 'app-login',
