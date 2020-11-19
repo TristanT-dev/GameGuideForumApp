@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 ## [0.0.4] - 2020-11-18
 
 ### **Added**
+- Created a branch [sprint3working](https://github.com/SenecaCollegeBTSProjects/Group_20/tree/sprint3working) from master by [@sunworks-code](https://github.com/sunworks-code)
 #### Game Guide Create Component
 - form for new game guide creation
 
