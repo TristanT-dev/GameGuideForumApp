@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 
 ### **Added**
 - Created a branch [sprint3working](https://github.com/SenecaCollegeBTSProjects/Group_20/tree/sprint3working) from master by [@sunworks-code](https://github.com/sunworks-code)
+- Created a branch [Tdev](https://github.com/SenecaCollegeBTSProjects/Group_20/tree/Tdev) from master by [TristanT-dev](https://github.com/TristanT-dev)
+
+#### Game Guide View Module
+- Prototype HTML/CSS proof of concept for new game guide
 #### Game Guide Create Component
 - form for new game guide creation
 
