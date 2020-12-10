@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-md-8">
-      <h3>Create a new game guide</h3>
-      <p>Enter the data for your game guide, and click the Save button</p>
+      <h3>Edit Game Guide</h3>
+      <p>Make changes to your game guide, and click the Save button</p>
       <form (ngSubmit)='guideSave()' #f='ngForm'>
   
         <div class="form-group">
           <label class="control-label" for="author">Author:</label>
-          <input class="form-control" id="author" name="author" [(ngModel)]="newGuideForm.author" required minlength="2"
+          <input class="form-control" id="author" name="author" disabled="disabled" [(ngModel)]="oldGuideData.author" required minlength="2"
             maxlength="100" #author="ngModel" autofocus>
   
           <!-- Validation error area -->
@@ -18,11 +18,12 @@
             <div *ngIf='author.errors?.required'>Author is required, 2 to 100 characters</div>
             <div *ngIf='author.errors?.minlength'>Author must be at least 2 characters</div>
           </div>
+          
         </div>
   
         <div class="form-group">
           <label class="control-label" for="fullTitle">Full Title:</label>
-          <input class="form-control" id="fullTitle" name="fullTitle" [(ngModel)]="newGuideForm.fullTitle" required minlength="2" maxlength="100"
+          <input class="form-control" id="fullTitle" name="fullTitle" [(ngModel)]="oldGuideData.fullTitle" required minlength="2" maxlength="100"
             #fullTitle="ngModel">
   
           <!-- Validation error area -->
@@ -30,37 +31,40 @@
             <div *ngIf='fullTitle.errors?.required'>Full Title is required, 2 to 100 characters</div>
             <div *ngIf='fullTitle.errors?.minlength'>Full Title must be at least 2 characters</div>
           </div>
+          
         </div>
 
         <div class="form-group">
             <label class="control-label" for="shortTitle">Short Title:</label>
-            <input class="form-control" id="shortTitle" name="shortTitle" [(ngModel)]="newGuideForm.shortTitle" required minlength="2" maxlength="50"
+            <input class="form-control" id="shortTitle" name="shortTitle" [(ngModel)]="oldGuideData.shortTitle" required minlength="2" maxlength="50"
               #shortTitle="ngModel">
     
             <!-- Validation error area -->
             <div *ngIf='shortTitle.invalid && (shortTitle.dirty || shortTitle.touched)' class='alert alert-danger'>
-              <div *ngIf='shortTitle.errors?.required'>Short Title is required, 2 to 50 characters</div>
-              <div *ngIf='shortTitle.errors?.minlength'>Short Title must be at least 2 characters</div>
-            </div>
+                <div *ngIf='shortTitle.errors?.required'>Short Title is required, 2 to 50 characters</div>
+                <div *ngIf='shortTitle.errors?.minlength'>Short Title must be at least 2 characters</div>
+              </div>
+           
         </div>
 
         <div class="form-group">
           <label class="control-label" for="category">Category:</label>
-          <select class="form-control" id="category" name="category" required [(ngModel)]="newGuideForm.category" 
+          <select class="form-control" id="category" name="category" required [(ngModel)]="oldGuideData.category" 
             #category="ngModel">
             <option value="{{c}}" *ngFor="let c of categories.categories">{{c}}</option>
           </select>
           <!-- Validation error area -->
           <div *ngIf='category.invalid && (category.dirty || category.touched)' class='alert alert-danger'>
-              <!-- The code below is situation-dependent - think before coding -->
-              <div *ngIf='category.errors?.required'>You must select a category</div>
-          </div>
+            <!-- The code below is situation-dependent - think before coding -->
+            <div *ngIf='category.errors?.required'>You must select a category</div>
+        </div>
+          
       </div>
 
 
         <div class="form-group">
           <label class="control-label" for="description">Description:</label>
-          <input class="form-control" id="description" name="description" [(ngModel)]="newGuideForm.description" maxlength="1000"
+          <input class="form-control" id="description" name="description" [(ngModel)]="oldGuideData.description" maxlength="1000"
             #shortTitle="ngModel">
   
           <!-- Validation error area -->
@@ -69,12 +73,13 @@
 
       <div class="form-group">
         <label class="control-label" for="content">Content:</label>
-        <textarea class="form-control" id="content" name="content" rows="10"  required [(ngModel)]="newGuideForm.content" maxlength="3000" #content="ngModel"></textarea>
+        <textarea class="form-control" id="content" name="content" rows="10"  required [(ngModel)]="oldGuideData.content" maxlength="3000" #content="ngModel"></textarea>
 
         <!-- Validation error area -->
         <div *ngIf='content.invalid && (content.dirty || content.touched)' class='alert alert-danger'>
             <div *ngIf='content.errors?.required'>Content is required, max 3000 characters.</div>
           </div>
+        
     </div>
 
      
@@ -87,3 +92,4 @@
       </form>
     </div>
   </div>
+

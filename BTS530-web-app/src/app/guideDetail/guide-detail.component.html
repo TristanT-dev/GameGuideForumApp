@@ -1,3 +1,21 @@
-<h3>Placeholder for detail page of game guide with mongodb id: {{guide._id}} </h3>
-<h3>Placeholder for detail page of game guide with full title: {{guide.fullTitle}}</h3>
+<!--Tristan put your custom html here and use the one way data binding to display the information ---->
+
+<!--
+    You can use these properties:
+
+    author: string;
+    fullTitle: string;
+    shortTitle: string;
+    description: string;
+    category: string;
+    content: string;
+-->
+
+<!--Use this button to go to edit game guide component feel free to change the style/look/placement of it-->
+<button class="btn btn-primary" routerLink="/game-guides/edit/{{guide._id}}">Edit Guide</button>
+
+<h1>{{guide.fullTitle}}</h1>
+<h4>{{guide.author}}</h4>
+<h4>{{guide.category}}</h4>
+<p>{{guide.description}}</p>
 <p>{{guide.content}}</p>
