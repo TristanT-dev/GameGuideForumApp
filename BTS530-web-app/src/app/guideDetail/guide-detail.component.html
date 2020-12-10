@@ -2,20 +2,76 @@
 
 <!--
     You can use these properties:
-
     author: string;
     fullTitle: string;
     shortTitle: string;
     description: string;
     category: string;
     content: string;
--->
-
-<!--Use this button to go to edit game guide component feel free to change the style/look/placement of it-->
-<button class="btn btn-primary" routerLink="/game-guides/edit/{{guide._id}}">Edit Guide</button>
-
+    
 <h1>{{guide.fullTitle}}</h1>
-<h4>{{guide.author}}</h4>
+    <h4>{{guide.author}}</h4>
 <h4>{{guide.category}}</h4>
 <p>{{guide.description}}</p>
 <p>{{guide.content}}</p>
+-->
+
+<!--Use this button to go to edit game guide component feel free to change the style/look/placement of it-->
+
+
+<title>Game Guide Prototype</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+<div class="w3-main" style="margin-left:50px">
+    
+    <div class="w3-row"></div>
+     
+          <h1 class="w3-text-black">{{guide.fullTitle}}</h1>
+          <p class="w3-text-gray">Author: {{guide.author}} &nbsp;  &nbsp; &nbsp; Date: {{guide.dateCreated}} 
+              <br><br>Date Revised: {{guide.dateUpdated}} </p>
+         
+          <button class="btn btn-primary" routerLink="/game-guides/edit/{{guide._id}}">Edit Guide</button>
+     
+        <hr>
+  <div class="w3-row">
+      <h2 class="w3 text-black">Overview</h2>
+      <h4>Short Title: {{guide.shortTitle}}&nbsp; &nbsp; &nbsp;Patch: {{guide.patch}}&nbsp; &nbsp; &nbsp;Category: {{guide.category}}</h4>
+      <hr>
+  <div class="w3-row">
+    <div class="w3" id ='intro'><a name='intro'></a>
+      <h2 class="w3-text-black">Description</h2>
+    </div>
+    <h3>{{guide.description}}</h3>
+  </div>
+<hr>
+<div class="w3-row w3-padding-50" ng-repeat="item in items">
+  <h2 class="w3-text-black">Content </h2>
+    <h3>{{guide.content}}</h3>
+ </div>
+</div>
+<hr>
+
+<dt>Was this helpful?</dt>
+<dd><button class = "btn btn-default">Yes <span class = "badge badge-light"></span></button>
+   &nbsp; <button class = "btn btn-default">No <span class = "badge badge-light"></span></button></dd>
+<button type="button" style = margin-left:40%>View Comments (16)</button>
+
+<div id="comments"><a name = "comments"></a>
+<br>
+    <h3>Leave a Comment</h3>
+  
+    
+      <label for="comment" class="required">Your message</label>
+      <textarea name="comment" id="comment" rows="10" tabindex="4"  required="required"></textarea>
+  
+      <button type="button" >Submit Comment</button>
+
+  
+  
+  </div>
+    
+</div>
