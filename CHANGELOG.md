@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 ### **Added**
 - Created a branch [sprint4final](https://github.com/SenecaCollegeBTSProjects/Group_20/tree/sprint4final) from master by [@sunworks-code](https://github.com/sunworks-code)
 
-### **Change**
+### **Changed**
 
 #### Game Guide Edit Component
 - form for editing existing game guides
@@ -17,7 +17,7 @@ All notable changes to this project will be documented in this file.
 - logic to support Game Guide editing
 
 #### Updated Game Guide Details Component
-- Added one-way binding to the HTML
+- Added one-way binding property values to the HTML 
 - Updated CSS component
 
 ## [0.0.4] - 2020-11-18
@@ -37,7 +37,7 @@ All notable changes to this project will be documented in this file.
 #### Data Model & Data Model Manager Service
 - logic to support Game Guide creation
 
-## **Changed**
+### **Changed**
 - migrated to bootstrap 4 from version 3.4
 - navigation bar component to work with bootstrap 4
 
@@ -56,7 +56,7 @@ All notable changes to this project will be documented in this file.
 #### Navigation Bar component
 - routing to other components
 
-## **Changed**
+### **Changed**
 - data-class data-managaer.ts to reflect addition of new components
 - changed home.html
 
