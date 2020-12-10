@@ -8,13 +8,13 @@ All notable changes to this project will be documented in this file.
 ### **Added**
 - Created a branch [sprint4final](https://github.com/SenecaCollegeBTSProjects/Group_20/tree/sprint4final) from master by [@sunworks-code](https://github.com/sunworks-code)
 
-### **Changed**
-
 #### Game Guide Edit Component
 - form for editing existing game guides
 
 #### Data Model Manager Service
 - logic to support Game Guide editing
+
+### **Changed**
 
 #### Updated Game Guide Details Component
 - Added one-way binding property values to the HTML 
