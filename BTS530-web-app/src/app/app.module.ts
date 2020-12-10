@@ -23,6 +23,7 @@ import { GuardAuthService } from './guard-auth.service';
 import { InterceptTokenService } from "./intercept-token.service";
 import { DataModelManagerService } from "./data-model-manager.service";
 import { GuideCreateComponent } from './guideCreate/guide-create.component';
+import { GuideEditComponent } from './guide-edit/guide-edit.component';
 
 
 
@@ -41,7 +42,8 @@ export function tokenGetter() {
     GuidesListComponent,
     ForumsListComponent,
     GuideDetailComponent,
-    GuideCreateComponent
+    GuideCreateComponent,
+    GuideEditComponent
   ],
   imports: [
     BrowserModule,

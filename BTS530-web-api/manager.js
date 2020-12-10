@@ -217,9 +217,11 @@ module.exports = function () {
           if(oldGuide){
 
               // update old version
+              //oldGuide.author = updatedGuide.author;
               oldGuide.fullTitle = updatedGuide.fullTitle;
               oldGuide.shortTitle = updatedGuide.shortTitle;
               oldGuide.patch = updatedGuide.patch;
+              oldGuide.category = updatedGuide.category;
               oldGuide.description = updatedGuide.description;
               oldGuide.content = updatedGuide.content;
               oldGuide.linkYouTube = updatedGuide.linkYouTube; 

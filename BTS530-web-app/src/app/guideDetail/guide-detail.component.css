@@ -1,0 +1,97 @@
+.w3-sidebar {
+    z-index: 1;
+    width: 250px;
+    top: 54px;
+    bottom: 0;
+    height: inherit;
+    position: sticky;
+}
+html,body,h1,h2,h3,h4,h5,h6,p {font-family: "Roboto", sans-serif;}
+  
+  .p{
+    margin: 0%;
+    padding: 0%;
+    line-height: 2px;
+  }
+  
+  hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+  }
+
+  #images{
+    border: 2px solid black;
+    border-radius: 1px;
+    margin: 25px;
+    width: 350px;
+    max-width: 100%;
+    height: auto;
+  }
+  #image1{
+    border: 3px solid black;
+    border-radius: 1px;
+    margin: 35px;
+    width: 550px;
+    max-width: 100%;
+    height: auto;
+  }
+
+
+  #comments textarea {
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+  
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+  
+    line-height: 1.4em;
+  }
+  /* The side navigation menu */
+.navfacts{
+    font-size: 14px;
+    line-height: 3%;
+    right: 50;
+    padding: 0px;
+    font-family: "Roboto", sans-serif;
+    color: darkslategray;
+}
+
+
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+
+    .w3-row {
+        border: 2cm;
+        white-space: pre-wrap;
+    }
+}

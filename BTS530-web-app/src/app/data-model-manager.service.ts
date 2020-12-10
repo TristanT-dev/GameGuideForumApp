@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from "rxjs/operators";
 
 import { ApiUserAccount, ApiGameGuide, ApiGuideComment } from "./data-model-classes";
+//import { ConsoleReporter } from 'jasmine';
 
 
 
@@ -76,7 +77,18 @@ export class DataModelManagerService {
       );
   }
 
+  apiGameGuideEdit(id: string, updatedGuide: ApiGameGuide): Observable<ApiGameGuide> {
+    return this.http.put<ApiGameGuide>(`${this.urlApi}/game-guides/edit/${id}`, updatedGuide, this.httpOptions)
+      .pipe(
+        tap((updatedItem: ApiGameGuide) => console.log(`Edited guide ${updatedGuide.shortTitle}`)),
+        catchError(this.handleError<ApiGameGuide>('Guide edit'))
+      );
+      
+  }
 
 
+ 
 
 }
+
+
