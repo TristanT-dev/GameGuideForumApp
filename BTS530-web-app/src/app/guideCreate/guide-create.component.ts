@@ -36,7 +36,7 @@ export class GuideCreateComponent implements OnInit {
 
     newGameGuide.author = this.newGuideForm.author;
     newGameGuide.fullTitle = this.newGuideForm.fullTitle;
-    newGameGuide.shortTitle = this.newGuideForm.description;
+    newGameGuide.shortTitle = this.newGuideForm.shortTitle;
     newGameGuide.description = this.newGuideForm.description;
     newGameGuide.category = this.newGuideForm.category;
     newGameGuide.content = this.newGuideForm.content;
