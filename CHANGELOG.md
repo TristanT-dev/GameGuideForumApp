@@ -5,7 +5,13 @@ All notable changes to this project will be documented in this file.
 
 ## [0.0.6] - 2021-01-25
 
+
 ### **Added**
+
+#### Forum Components for full list, adding a new thread, viewing a thread
+- Created a branch [devT](https://github.com/SenecaCollegeBTSProjects/Group_20/tree/devT) from master by [TristanT-dev](https://github.com/TristanT-dev)
+- Button to submit new forum thread
+- HTML/TS for forums
 
 #### Navbar Improvements (Author - Kevin [@sunworks-code](https://github.com/sunworks-code))
 - The navbar now has a new button that can either display "login" or "logout" depending on if there is an active user
