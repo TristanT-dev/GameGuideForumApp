@@ -187,6 +187,14 @@ module.exports = function () {
           // This will find zero or more
           return results;
         },
+      
+      // get one (or some) gameGuides, by author
+      
+      gameGuideGetByAuthor: async function (data) {
+        text = decodeURIComponent(data);
+        let results = await GameGuide.find({ author: text});
+        return results;
+      },
 
       // add new gameGuide
 

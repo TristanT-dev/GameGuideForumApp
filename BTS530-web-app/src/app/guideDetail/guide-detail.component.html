@@ -35,9 +35,9 @@
           <h1 class="w3-text-black">{{guide.fullTitle}}</h1>
           <p class="w3-text-gray">Author: {{guide.author}} &nbsp;  &nbsp; &nbsp; Date: {{guide.dateCreated}} 
               <br><br>Date Revised: {{guide.dateUpdated}} </p>
-         
+          <div *ngIf="a.currentUser() === guide.author">
           <button class="btn btn-primary" routerLink="/game-guides/edit/{{guide._id}}">Edit Guide</button>
-     
+          </div>
         <hr>
   <div class="w3-row">
       <h2 class="w3 text-black">Overview</h2>

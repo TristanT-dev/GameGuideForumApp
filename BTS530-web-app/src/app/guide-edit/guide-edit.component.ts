@@ -19,6 +19,7 @@ export class GuideEditComponent implements OnInit {
   guideResult: ApiGameGuide;
   categories:  GameGuideCategories;
   id: string;
+  author: string;
 
   constructor(private m: DataModelManagerService, private router: Router, private route: ActivatedRoute) { 
     this.guideEditForm = new GameGuideForm();
@@ -29,6 +30,7 @@ export class GuideEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    //this.author = this.route.snapshot.params['author'];
 
     this.m.apiGameGuideGetById(this.id).subscribe(u =>  { 
       this.oldGuideData = u

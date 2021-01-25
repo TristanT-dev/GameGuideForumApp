@@ -24,6 +24,7 @@ import { InterceptTokenService } from "./intercept-token.service";
 import { DataModelManagerService } from "./data-model-manager.service";
 import { GuideCreateComponent } from './guideCreate/guide-create.component';
 import { GuideEditComponent } from './guide-edit/guide-edit.component';
+import { ApiGameGuide } from './data-model-classes';
 
 
 
@@ -61,6 +62,7 @@ export function tokenGetter() {
     AuthService,
     DataModelManagerService,
     GuardAuthService,
+    ApiGameGuide,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptTokenService,
