@@ -24,6 +24,8 @@ import { InterceptTokenService } from "./intercept-token.service";
 import { DataModelManagerService } from "./data-model-manager.service";
 import { GuideCreateComponent } from './guideCreate/guide-create.component';
 import { GuideEditComponent } from './guide-edit/guide-edit.component';
+import { ForumDetailComponent } from './forum-detail/forum-detail.component';
+import { ForumCreateComponent } from './forum-create/forum-create.component';
 
 
 
@@ -43,7 +45,9 @@ export function tokenGetter() {
     ForumsListComponent,
     GuideDetailComponent,
     GuideCreateComponent,
-    GuideEditComponent
+    GuideEditComponent,
+    ForumDetailComponent,
+    ForumCreateComponent
   ],
   imports: [
     BrowserModule,

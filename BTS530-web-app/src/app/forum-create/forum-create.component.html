@@ -1,0 +1,41 @@
+<div class = "row">
+    <div class = "col-md-8">
+       <h3><b>Create new Forum Thread</b></h3>
+       <p>When you're finished entering data, hit the save button.</p>
+       <form (ngSubmit)='userSave()' #f='ngForm'>
+       <div class = "form-group">
+          <label class = "control-label" for="authorName">Author Name</label>
+          <input type = "text" class = "form-control" id="authorName" name="authorName" [(ngModel)]="newUser.authorName" required minlength ="3"
+          maxlength="100" #authorName="ngModel" autofocus>
+          <div *ngIf='authorName.invalid && (authorName.dirty || authorName.touched)' class='alert alert-danger'>
+             <!-- The code below is situation-dependent - think before coding -->
+             <div *ngIf='authorName.errors?.required'>Name is required, 3 to 100 characters</div>
+             <div *ngIf='authorName.errors?.minlength'>Name must be at least 3 characters</div>
+          </div>
+       </div>
+       <div class = "form-group">
+          <label class = "control-label" for="wordEnglish">Subject</label>
+          <input type = "text"  class = "form-control" id="wordEnglish" name="wordEnglish" [(ngModel)]="newUser.wordEnglish" required minlength ="3"
+          maxlength="100" #wordEnglish="ngModel">
+          <div *ngIf='wordEnglish.invalid && (wordEnglish.dirty || wordEnglish.touched)' class='alert alert-danger'>
+             <div *ngIf='wordEnglish.errors?.required'>Word is required, 3 to 100 characters</div>
+             <div *ngIf='wordEnglish.errors?.minlength'>Word must be at least 3 characters</div>
+          </div>
+       </div>
+      
+       <div class = "form-group">
+          <label class = "control-label" for="definition">Content:</label>
+          <textarea class="form-control" id="definition" name="definition" minlength = "50" maxlength="5000" [(ngModel)]="newDef.definition"
+          rows="6" required rows="5" #definition="ngModel"></textarea>
+          <div *ngIf='definition.invalid && (definition.dirty || definition.touched)' class='alert alert-danger'>
+             <div *ngIf='definition.errors?.required'>Content is required, 50 to 5000 characters</div>
+             <div *ngIf='definition.errors?.minlength'>Content must be at least 50 characters</div>
+          </div>
+       </div>
+     
+       <button class="btn btn-success" type="submit" [disabled]="!f.form.valid">Save</button>&nbsp;
+       <a routerLink="/forums" class="btn btn-warning">Back to list</a>
+       </form>
+    </div>
+   
+ </div>

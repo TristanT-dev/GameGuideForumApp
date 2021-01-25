@@ -144,3 +144,24 @@ export class GameGuideCategories {
 
     categories: string[];
 }
+
+
+export class ApiForum {
+   
+    _id: string;
+    subject: string;
+    dateCreated: string;
+    content: string;
+    author: string;
+    like: number;
+    dislikes: number;
+    constructor(){
+        let date = new Date();
+        this.subject = "";
+        this.content = "";
+        this.dateCreated = date.toISOString();
+        this.author = "";
+        this.like = 0;
+        this.dislikes = 0;
+    }
+}

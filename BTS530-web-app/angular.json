@@ -144,6 +144,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "BTS530-web-app"
+    }
+  },
+  "defaultProject": "BTS530-web-app",
+  "cli": {
+    "analytics": false
+  }
 }

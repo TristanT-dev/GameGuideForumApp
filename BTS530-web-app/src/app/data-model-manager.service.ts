@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from "rxjs/operators";
 
-import { ApiUserAccount, ApiGameGuide, ApiGuideComment } from "./data-model-classes";
+import { ApiUserAccount, ApiGameGuide, ApiGuideComment, ApiForum } from "./data-model-classes";
 //import { ConsoleReporter } from 'jasmine';
 
 
@@ -83,12 +83,33 @@ export class DataModelManagerService {
         tap((updatedItem: ApiGameGuide) => console.log(`Edited guide ${updatedGuide.shortTitle}`)),
         catchError(this.handleError<ApiGameGuide>('Guide edit'))
       );
-      
-  }
+      }
+
+//Forum
 
 
- 
+//GetAll
+apiForumGetAll(): Observable<ApiForum[]> {
+  return this.http.get<ApiForum[]>(`${this.urlApi}/forums/all`);
+}
+apiForumGetSome(word: string): Observable<ApiForum[]> {
+  word = encodeURIComponent(word);
+  return this.http.get<ApiForum[]>(`${this.urlApi}/forums/by-short-title/${word}`);
+}
 
+//Get by ID
+apiForumByID(id:string): Observable<ApiForum>{
+  return this.http.get<ApiForum>(`${this.urlApi}/forums/id/${id}`);
+}
+
+//Add Forum
+apiForumAdd(newForum: ApiForum): Observable<ApiForum> {
+  return this.http.post<ApiForum>(`${this.urlApi}/forums/add`, newForum, this.httpOptions)
+    .pipe(
+      tap((newForum: ApiForum) => console.log(`Added new Forum ${newForum._id}`)),
+      catchError(this.handleError<ApiForum>('Forum add'))
+    );
+}
 }
 
 

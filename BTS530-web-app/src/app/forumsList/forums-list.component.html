@@ -1,1 +1,34 @@
-<h3>Placeholder for forums list component!!!</h3>
+<div class="row">
+    <p>&nbsp;</p>
+    <label for="search"><strong>List of All Forums  </strong></label>
+    <input type="search" id="search" name="search"  minlength="3" maxlength="100" (click)="clear()" placeholder ="(Enter 3 characters or more)" (ngModelChange)="doSearch()" [(ngModel)]="search">
+    &nbsp;
+    &nbsp;<div *ngIf='search.length<3 && search.length>0'>Search title must be at least 3 characters</div>
+    &nbsp;&nbsp;<button class="btn btn-primary" routerLink="/forums/add">Submit New Forum</button>
+    
+</div>
+
+<p>&nbsp;</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Subject</th>
+      <th>Author</th>
+      <th>Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let f of forums">
+      <td>{{f.subject}}</td>
+      <td>{{f.author}}</td>
+      <td>{{f.dateCreated}}</td>
+      <td>
+        <a routerLink = "/forums/detail/{{f._id}}" class="btn btn-default">View</a>
+      </td>
+    </tr>
+    <tr *ngIf='forums == null || forums.length == 0'>
+        <td>No Results</td>
+    </tr>
+  </tbody>
+</table>
