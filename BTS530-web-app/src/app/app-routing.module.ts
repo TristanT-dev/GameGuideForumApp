@@ -11,7 +11,7 @@ import { ForumsListComponent } from './forumsList/forums-list.component';
 import { GuideCreateComponent } from './guideCreate/guide-create.component';
 import { GuideEditComponent } from './guide-edit/guide-edit.component';
 
-
+import { GuardAuthService } from './guard-auth.service';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,8 +20,8 @@ const routes: Routes = [
   { path: 'game-guides', component: GuidesListComponent },
   { path: 'game-guides/detail/:id', component: GuideDetailComponent },
   { path: 'forums', component: ForumsListComponent },
-  { path: 'game-guides/add', component: GuideCreateComponent },
-  { path: 'game-guides/edit/:id', component: GuideEditComponent},
+  { path: 'game-guides/add', component: GuideCreateComponent, canActivate: [GuardAuthService] },
+  { path: 'game-guides/edit/:id', component: GuideEditComponent, canActivate: [GuardAuthService] },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
   
 ];

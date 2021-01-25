@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 
 import { DataModelManagerService } from '../data-model-manager.service';
 import { ApiGameGuide, GameGuideForm, GameGuideCategories } from '../data-model-classes';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -17,9 +18,10 @@ export class GuideCreateComponent implements OnInit {
   newGuideAdd: ApiGameGuide;
   newGuideResult: ApiGameGuide;
   categories:  GameGuideCategories;
+  currentUser: string;
 
 
-  constructor(private m: DataModelManagerService, private router: Router) { 
+  constructor(public a: AuthService, private m: DataModelManagerService, private router: Router) { 
     this.newGuideForm = new GameGuideForm();
     this.newGuideAdd = new ApiGameGuide();
     this.newGuideResult = new ApiGameGuide();
@@ -27,6 +29,7 @@ export class GuideCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.currentUser = this.a.currentUser();
   }
 
   guideSave(): void {
@@ -34,7 +37,8 @@ export class GuideCreateComponent implements OnInit {
     let newGameGuide = new ApiGameGuide();
     let date = new Date();
 
-    newGameGuide.author = this.newGuideForm.author;
+    //newGameGuide.author = this.newGuideForm.author;
+    newGameGuide.author = this.currentUser;
     newGameGuide.fullTitle = this.newGuideForm.fullTitle;
     newGameGuide.shortTitle = this.newGuideForm.shortTitle;
     newGameGuide.description = this.newGuideForm.description;
@@ -47,6 +51,7 @@ export class GuideCreateComponent implements OnInit {
 
     this.m.apiGameGuideAdd(this.newGuideAdd).subscribe(u => {
       this.newGuideResult = u;
+      //this.router.navigate([`/game-guides/detail/${this.newGuideResult._id}/${this.newGuideResult.author}`]);
       this.router.navigate([`/game-guides/detail/${this.newGuideResult._id}`]);
     });
 

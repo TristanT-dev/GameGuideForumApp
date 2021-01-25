@@ -65,6 +65,10 @@ export class DataModelManagerService {
     return this.http.get<ApiGameGuide[]>(`${this.urlApi}/game-guides/by-short-title/${word}`);
   }
 
+  apiGameGuideGetByAuthor(author: string): Observable<ApiGameGuide[]> {
+    return this.http.get<ApiGameGuide[]>(`${this.urlApi}/game-guides/by-author/${author}`);
+  }
+
   apiGameGuideGetById(id: string): Observable<ApiGameGuide> {
     return this.http.get<ApiGameGuide>(`${this.urlApi}/game-guides/by-id/${id}`);
   }

@@ -41,8 +41,8 @@ var jwtOptions = {};
 // Configure the issuer
 jwtOptions.issuer = 'useraccounts.example.com';
 // Choose whether the incoming authorization header scheme is BEARER or JWT
-jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-//jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
+//jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
 
 // IMPORTANT - the following secret should be a long, unguessable string 
 // (ideally stored in a "protected storage" area on the 
@@ -51,7 +51,7 @@ jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 // https://lastpass.com/generatepassword.php 
 // And use it as the value for the following...
 //jwtOptions.secretOrKey = 'generate-your-own-value';
-jwtOptions.secretOrKey = 'B^pusFgZDEBFRLj8Ee#yU8oL&3rDIC#KfC01wkyC^glRPdHg#I';
+jwtOptions.secretOrKey = 'B^pusFgZDEBFRLj8Ee#yU8oL&3rDIC#KfC01wkyC^glRPdHg#IRVJLphuUHw$I5l';
 
 var strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
 
@@ -91,6 +91,7 @@ app.get("/api/useraccounts/me", passport.authenticate('jwt', { session: false })
 
 // Get all (for dev testing only; DISABLE or PROTECT before deployment!)
 // (Maybe make it available only to requests that have the "UserAccountManager" role)
+/*
 app.get("/api/user-accounts", (req, res) => {
   // Call the manager method
   m.useraccountsGetAll()
@@ -102,6 +103,7 @@ app.get("/api/user-accounts", (req, res) => {
       res.status(500).json({ "message": error });
     })
 });
+*/
 
 /*
 // Get one (for dev testing only; DISABLE or PROTECT before deployment!)
@@ -137,7 +139,7 @@ app.post("/api/user-accounts/register", (req, res) => {
     .then((data) => {
       res.json({ "message": data });
     }).catch((msg) => {
-      console.log(req.body);
+      //console.log(req.body);
       res.status(400).json({ "message": msg });
     });
 });
@@ -156,18 +158,18 @@ app.post("/api/user-accounts/login", (req, res) => {
       // There are 86400 seconds in a day
       // Assume a token lifetime of 14 days
       let now = Date.now();
-      let exp = Math.round(now / 1000) + (86400 * 14);
+      //let exp = Math.round(now / 1000) + (86400 * 14);
       // For testing purposes, expire the token in 120 seconds
-      //let exp = Math.round(now / 1000) + 120;
+      let exp = Math.round(now / 1000) + 3600;
 
       // Configure the payload with data and claims
       // Properties are defined here...
       // https://tools.ietf.org/html/rfc7519
       var payload = {
       iss: 'useraccounts.example.com',
-      exp: exp
+      exp: exp,
       //_id: data._id,
-      //sub: data.username,
+      username: data.username
       //email: data.username,
       //name: data.fullName,
       //roles: data.roles,
@@ -227,10 +229,23 @@ app.get("/api/game-guides/by-short-title/:word", (req, res) => {
     })
 });
 
+// get one or some gameGuides, by author
+app.get("/api/game-guides/by-author/:author", (req, res) => {
+  // Call the manager method
+  m.gameGuideGetByAuthor(req.params.author)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch(() => {
+      res.status(404).json({ "message": "Resource not found" });
+    })
+});
+
 // Add new
 // This will need a "gameGuide" document 
-app.post("/api/game-guides/add", (req, res) => {
+app.post("/api/game-guides/add", passport.authenticate('jwt', { session: false }), (req, res) => {
   // Call the manager method
+  //console.log(req.user);
   m.gameGuideAdd(req.body)
     .then((data) => {
       res.status(201).json(data);
@@ -241,7 +256,7 @@ app.post("/api/game-guides/add", (req, res) => {
 });
 
 // Edit a particular gameGuide
-app.put("/api/game-guides/edit/:id", (req, res) => {
+app.put("/api/game-guides/edit/:id", passport.authenticate('jwt', { session: false }), (req, res) => {
   // Call the manager method
   m.gameGuideEdit(req.params.id, req.body)
     .then((data) => {

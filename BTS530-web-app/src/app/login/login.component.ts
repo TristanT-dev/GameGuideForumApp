@@ -21,9 +21,9 @@ export class LoginComponent implements OnInit {
   loginStatus: boolean;
 
   // Token
-  tokenRaw?: string;
-  tokenDecoded?: any;
-  tokenIssuedTimestamp: any;
+  //tokenRaw?: string;
+  //tokenDecoded?: any;
+  //tokenIssuedTimestamp: any;
 
   constructor(
     
@@ -46,20 +46,28 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
   
   onSubmit(): void {
     //console.log(this.userCredentials);
     
-    
+    localStorage.removeItem('access_token');
 
 
     
 
     this.a.login(this.userCredentials).subscribe(u => {
-      console.log(u);
+      //console.log(u);
       this.loginStatus = u.loginStatus;
+      //console.log(u.token);
+      if(this.loginStatus == true){
+        localStorage.setItem('access_token', u.token);
+        this.a.setActiveUser();
+        this.router.navigate(['/home']);
+        //console.log(this.a.currentUser());
+      }else{
+        console.log("Login failed");
+      }
       
       
     });

@@ -41,12 +41,12 @@ export class RegisterComponent implements OnInit {
       alert("Error: Passwords do not match!");
     }else{
       this.newAccountAdd = newAccount;
-      console.log(this.newAccountAdd);
+      //console.log(this.newAccountAdd);
 
       this.m.apiUserAccountAdd(this.newAccountAdd).subscribe(u => {
         this.newAccountResult = u;
       });
-
+      alert("Account created successfully.");
     }
 
     

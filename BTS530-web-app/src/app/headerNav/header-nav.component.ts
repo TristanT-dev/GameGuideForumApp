@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from '../auth.service';
+
 @Component({
   selector: 'app-header-nav',
   templateUrl: './header-nav.component.html',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderNavComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public a: AuthService,
+  ) { 
+  }
 
   ngOnInit(): void {
   }

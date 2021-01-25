@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { DataModelManagerService } from '../data-model-manager.service';
 import { ApiGameGuide } from "../data-model-classes";
+import { AuthService } from '../auth.service';
+import { GuardAuthService } from '../guard-auth.service';
 
 
 @Component({
@@ -13,13 +15,16 @@ import { ApiGameGuide } from "../data-model-classes";
 export class GuideDetailComponent implements OnInit {
 
   guide: ApiGameGuide;
+  author: string;
 
-  constructor(private m: DataModelManagerService, private route: ActivatedRoute) { 
+  constructor(public a: AuthService, private guard: GuardAuthService, private m: DataModelManagerService, private route: ActivatedRoute) { 
     this.guide = new ApiGameGuide();
   }
 
   ngOnInit(): void {
     let id = this.route.snapshot.params['id'];
+    //this.author = this.route.snapshot.params['author'];
+    this.guard.checkUser(id);
 
     this.m.apiGameGuideGetById(id).subscribe(u => {
         this.guide = u;
