@@ -3,6 +3,30 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.0.6] - 2021-01-25
+
+### **Added**
+
+#### Navbar Improvements (Author - Kevin [@sunworks-code](https://github.com/sunworks-code))
+- The navbar now has a new button that can either display "login" or "logout" depending on if there is an active user
+- The button can be used to go to the login page or logout
+
+#### Home Page Improvements (Author - Kevin [@sunworks-code](https://github.com/sunworks-code))
+- When a user logins the home page will now display a list of their guides and a welcome message
+- If the user is not logged in the old page will display asking the user to either signin or register
+
+### **Changed**
+
+#### Protected Game Guide Create Component (Author - Kevin [@sunworks-code](https://github.com/sunworks-code))
+- Refer to issue #[19](https://github.com/SenecaCollegeBTSProjects/Group_20/issues/19)
+- Users who have not been authenticated (logged in and recieved a token) can no longer create game guides
+- If trying to create a game guide without being authenticated, the user will be redirected to the login page
+
+#### Protected Game Guide Edit Component (Author - Kevin [@sunworks-code](https://github.com/sunworks-code))
+- Refer to issue #[19](https://github.com/SenecaCollegeBTSProjects/Group_20/issues/19)
+- In order to edit a game guide the user must now be authenticated and be the author of that game guide
+- The "edit game guide" button will only appear on the game guide detail view page if the user is authenicated and is the author 
+
 ## [0.0.5] - 2020-12-09
 
 ### **Added**
