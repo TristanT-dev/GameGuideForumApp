@@ -125,6 +125,7 @@ export class GameGuideForm {
         this.description = "";
         this.category = "";
         this.content = "";
+        this.images = [];
     }
 
     author: string;
@@ -133,6 +134,7 @@ export class GameGuideForm {
     description: string;
     category: string;
     content: string;
+    images: string[];
 
 }
 

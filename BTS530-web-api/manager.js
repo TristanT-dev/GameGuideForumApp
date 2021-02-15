@@ -201,8 +201,8 @@ module.exports = function () {
       gameGuideAdd: function (newGuide) {
           return new Promise(function (resolve, reject) {
 
-              let date = new Date();
-              newGuide.dateCreated = date;
+              //let date = new Date();
+              //newGuide.dateCreated = date;
 
               GameGuide.create(newGuide, (error, guide) => {
                   if(error) {
@@ -233,8 +233,10 @@ module.exports = function () {
               oldGuide.description = updatedGuide.description;
               oldGuide.content = updatedGuide.content;
               oldGuide.linkYouTube = updatedGuide.linkYouTube; 
+              oldGuide.dateUpdated = updatedGuide.dateUpdated;
+              oldGuide.images = updatedGuide.images;
       
-              oldGuide.dateUpdated = new Date();
+              //oldGuide.dateUpdated = new Date();
               
               await oldGuide.save();
               return oldGuide;

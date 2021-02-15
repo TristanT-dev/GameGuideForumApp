@@ -5,6 +5,7 @@ import { DataModelManagerService } from '../data-model-manager.service';
 import { ApiGameGuide } from "../data-model-classes";
 import { AuthService } from '../auth.service';
 import { GuardAuthService } from '../guard-auth.service';
+import { $ } from 'protractor';
 
 
 @Component({
@@ -29,6 +30,7 @@ export class GuideDetailComponent implements OnInit {
     this.m.apiGameGuideGetById(id).subscribe(u => {
         this.guide = u;
     });
+
   }
 
 }

@@ -80,7 +80,20 @@
           </div>
     </div>
 
-     
+    <div class="form-group">
+      <label class="control-label" for="singleImageUrl">Image Url (Max 3):</label>
+          <input class="form-control" id="singleImageUrl" name="singleImageUrl" [(ngModel)]="this.singleImageUrl" maxlength="200"
+            #signleImageUrl="ngModel">
+            <button *ngIf="this.imageUrls.length != 3" class="btn btn-primary" type="button" (click)="addImage()">Add Image</button>
+            &nbsp;<button class="btn btn-secondary" type="button" (click)="clearImages()">Clear Images</button>
+    </div>
+    
+    <div class="form-group">
+      <ol>
+        <li *ngFor='let i of imageUrls'>{{i}}</li>
+      </ol>
+    </div>
+ 
 
         
   
