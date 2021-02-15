@@ -84,7 +84,7 @@
       <label class="control-label" for="singleImageUrl">Image Url (Max 3):</label>
           <input class="form-control" id="singleImageUrl" name="singleImageUrl" [(ngModel)]="this.singleImageUrl" maxlength="200"
             #signleImageUrl="ngModel">
-            <button class="btn btn-primary" type="button" (click)="addImage()">Add Image</button>
+            <button *ngIf="this.imageUrls.length != 3" class="btn btn-primary" type="button" (click)="addImage()">Add Image</button>
             &nbsp;<button class="btn btn-secondary" type="button" (click)="clearImages()">Clear Images</button>
     </div>
     
