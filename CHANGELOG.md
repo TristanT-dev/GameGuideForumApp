@@ -3,6 +3,15 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.0.7] - 2021-02-15
+
+### **Added**
+
+#### GameGuide Image functionality support using URLs (Author - Kevin [@sunworks-code](https://github.com/sunworks-code))
+- Users can now add image URLs to their newly created game guides or existing game guides using the "Add Image" button
+- Image support with URLs is also supported on the GameGuide edit page, users can clear their existing images and replace them with new ones
+- Images added are displayed using a BootStrap carousel on the GameGuide detail page
+
 ## [0.0.6] - 2021-01-25
 
 
