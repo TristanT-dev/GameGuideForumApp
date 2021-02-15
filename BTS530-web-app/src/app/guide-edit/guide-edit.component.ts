@@ -21,11 +21,16 @@ export class GuideEditComponent implements OnInit {
   id: string;
   author: string;
 
+  singleImageUrl: string;
+  imageUrls: string[];
+
   constructor(private m: DataModelManagerService, private router: Router, private route: ActivatedRoute) { 
     this.guideEditForm = new GameGuideForm();
     this.oldGuideData = new ApiGameGuide();
     this.guideResult = new ApiGameGuide();
     this.categories = new GameGuideCategories();
+    this.singleImageUrl = "";
+    this.imageUrls = [];
   }
 
   ngOnInit(): void {
@@ -34,9 +39,22 @@ export class GuideEditComponent implements OnInit {
 
     this.m.apiGameGuideGetById(this.id).subscribe(u =>  { 
       this.oldGuideData = u
+      this.imageUrls = this.oldGuideData.images;
     });
-     
     
+  
+  }
+
+  addImage(): void {
+    if(this.singleImageUrl !== "" && this.imageUrls.length < 3 ){
+      this.imageUrls.push(this.singleImageUrl);
+    }
+    console.log(this.imageUrls);
+    this.singleImageUrl = "";
+  }
+
+  clearImages(): void {
+    this.imageUrls = [];
   }
 
   guideSave(): void {
@@ -53,6 +71,8 @@ export class GuideEditComponent implements OnInit {
 
     updatedGuide.dateCreated = this.oldGuideData.dateCreated;
     updatedGuide.dateUpdated = date.toISOString();
+
+    updatedGuide.images = this.imageUrls;
 
 
     this.m.apiGameGuideEdit(this.id, updatedGuide).subscribe(u => {

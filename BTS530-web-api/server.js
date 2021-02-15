@@ -6,6 +6,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const bodyParser = require('body-parser');
+const multer = require('multer');
 const app = express();
 const HTTP_PORT = process.env.PORT || 8080;
 // Or use some other port number that you like better
@@ -18,6 +19,18 @@ app.use(cors());
 // Data model and persistent store setup
 const manager = require("./manager.js");
 const m = manager();
+
+// upload image
+const storage = multer.diskStorage({
+  destination: (req, file, callBack) => {
+    callBack(null, 'uploads')
+  },
+  filename: (req, file, callBack) => {
+    callBack(null, file.originalname)
+  }
+})
+
+var upload = multer({storage: storage})
 
 
 
@@ -246,6 +259,7 @@ app.get("/api/game-guides/by-author/:author", (req, res) => {
 app.post("/api/game-guides/add", passport.authenticate('jwt', { session: false }), (req, res) => {
   // Call the manager method
   //console.log(req.user);
+
   m.gameGuideAdd(req.body)
     .then((data) => {
       res.status(201).json(data);
@@ -375,6 +389,7 @@ app.put("/api/forum-threads/edit-post/:id", (req, res) => {
 app.use((req, res) => {
   res.status(404).send("Resource not found");
 });
+
 
 // ################################################################################
 // Attempt to connect to the database, and

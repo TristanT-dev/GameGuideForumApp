@@ -20,22 +20,42 @@ export class GuideCreateComponent implements OnInit {
   categories:  GameGuideCategories;
   currentUser: string;
 
+  singleImageUrl: string;
+  imageUrls: string[];
+
+
 
   constructor(public a: AuthService, private m: DataModelManagerService, private router: Router) { 
     this.newGuideForm = new GameGuideForm();
     this.newGuideAdd = new ApiGameGuide();
     this.newGuideResult = new ApiGameGuide();
     this.categories = new GameGuideCategories();
+    this.singleImageUrl = "";
+    this.imageUrls = [];
   }
 
   ngOnInit(): void {
     this.currentUser = this.a.currentUser();
   }
 
+  addImage(): void {
+    if(this.singleImageUrl !== "" && this.imageUrls.length < 3 ){
+      this.imageUrls.push(this.singleImageUrl);
+    }
+    console.log(this.imageUrls);
+    this.singleImageUrl = "";
+  }
+
+  clearImages(): void {
+    this.imageUrls = [];
+  }
+
   guideSave(): void {
-    
+
     let newGameGuide = new ApiGameGuide();
     let date = new Date();
+
+    
 
     //newGameGuide.author = this.newGuideForm.author;
     newGameGuide.author = this.currentUser;
@@ -47,7 +67,12 @@ export class GuideCreateComponent implements OnInit {
 
     newGameGuide.dateCreated = date.toISOString();
 
+    newGameGuide.images = this.imageUrls;
+    console.log(newGameGuide);
+
     this.newGuideAdd = newGameGuide;
+
+    console.log(this.newGuideAdd);
 
     this.m.apiGameGuideAdd(this.newGuideAdd).subscribe(u => {
       this.newGuideResult = u;
