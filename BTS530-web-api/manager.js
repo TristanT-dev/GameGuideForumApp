@@ -73,12 +73,48 @@ module.exports = function () {
             GameGuide = db.model("gameGuides", gameGuideSchema, "gameGuides");
             ForumThread = db.model("forumThreads", threadSchema, "forumThreads");
             UserAccount = db.model("userAccounts", userAccountSchema, "userAccounts");
-           
+            GuideComment = db.model("guideComments",guideCommentSchema, "guideComments" )
             resolve();
           });
         });
       },
 
+      //guideComment requests ************************************************************
+
+      // get all
+      guideCommentGetAll: function () {
+        return new Promise((resolve, reject) => {
+        
+          GuideComment.find()
+            .sort({ rating: 'asc' })
+            .exec((error, guides) => {
+              if (error) {
+                // Query error
+                return reject(error.message);
+              }
+              // Found, a collection will be returned
+              return resolve(guides);
+            });
+        });
+      },
+      //add comment
+      guideCommentAdd: function (newGuideComment) {
+        return new Promise(function (resolve, reject) {
+
+            let date = new Date();
+            newGuideComment.dateCreated = date;
+
+            GuideComment.create(newGuideComment, (error, guideComment) => {
+                if(error) {
+                    // Cannot add item
+                    return reject(error.message);
+                }
+                //Added object will be returned
+                return resolve(guideComment);
+            });
+
+        })
+    },
 
 
       // userAccount requests ************************************************************

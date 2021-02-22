@@ -9,6 +9,7 @@ var Post = require('./msc-threadPost');
 // Entity schema
 var threadSchema = new Schema({
     subject: String,
+    content: String,
     dateCreated: Date,
     author: String,
     like: Number,

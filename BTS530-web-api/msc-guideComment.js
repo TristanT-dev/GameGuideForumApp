@@ -5,11 +5,9 @@ var Schema = mongoose.Schema;
 
 // Entity schema
 var guideCommentSchema = new Schema({
-    content: String,
+    comment: String,
     dateCreated: Date,
     author: String,
-    like: Number,
-    dislikes: Number
 });
 
 // Make schema available to the application

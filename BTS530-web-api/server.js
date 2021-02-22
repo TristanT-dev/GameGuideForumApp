@@ -276,6 +276,17 @@ app.put("/api/game-guides/edit-comment/:id", (req, res) => {
     })
 });
 
+// Get all (sorted)
+app.get('/api/guide-comments/all', (req, res) => {
+  // Call the manager
+  m.forumThreadGetAll()
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((error) => {
+      res.status(500).json({ 'message': error });
+    })
+});
 // forum thread requests *******************************************************************
 
 // Get all (sorted)
