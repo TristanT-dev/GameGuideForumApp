@@ -3,6 +3,20 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.0.8] - 2021-02-22
+
+
+## **Added**
+- Added GuideComments collection on mongoDB 
+## **Changed**
+
+#### Web API
+- Update the guideCommentSchema to reflect accurate fields
+- Updated server.js & manager.js 
+
+#### Angular App
+- Updated data-model-manager.ts & data-model-classes.ts with updated functions
+
 ## [0.0.7] - 2021-02-15
 
 ### **Added**
