@@ -6,9 +6,9 @@ All notable changes to this project will be documented in this file.
 ## [0.0.8] - 2021-02-22
 
 
-## **Added**
+### **Added**
 - Added GuideComments collection on mongoDB 
-## **Changed**
+### **Changed**
 
 #### Web API
 - Update the guideCommentSchema to reflect accurate fields
