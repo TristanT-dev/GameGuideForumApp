@@ -9,7 +9,8 @@ var guideCommentSchema = new Schema({
     dateCreated: Date,
     author: String,
     like: Number,
-    dislikes: Number
+    dislikes: Number,
+    authorId: String
 });
 
 // Make schema available to the application

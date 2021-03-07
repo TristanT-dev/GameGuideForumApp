@@ -67,6 +67,40 @@ html,body,h1,h2,h3,h4,h5,h6,p {font-family: "Roboto", sans-serif;}
     color: darkslategray;
 }
 
+.commentBoxContainer {
+  border: 1px solid lightgray;
+  padding: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.commentBoxAuthor {
+  font-size: 13px;
+  text-decoration: underline;
+  margin-bottom: 8px;
+}
+
+.commentBoxCommentSec{
+  padding-left: 12px;
+}
+
+.removeCross{
+  display: flex;
+  align-items: center;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 50%;
+  height: 30px;
+  width: 28px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.removeCross:hover{
+  background-color: lightgray;
+}
 
 #page-content-wrapper {
     min-width: 100vw;

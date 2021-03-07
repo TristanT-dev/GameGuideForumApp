@@ -290,6 +290,27 @@ module.exports = function () {
           }
       },
 
+      // delete a comment from commentGuide
+      commentGuideDeleteComment: async function (commentId) {
+
+        // Attempt to locate the existing document that has the desired comment
+          let gameGuide = await GameGuide.findOne({ "comments._id": commentId });
+      
+          if (gameGuide) {
+            // Attempt to locate the comment and getting the index
+            let index = gameGuide.comments.findIndex(comment => `${comment._id}` === `${commentId}`);
+            gameGuide.comments.splice(index,1);
+
+            await gameGuide.save();
+            // Send the entire document back to the requestor
+            return gameGuide;
+          }
+          else {
+            // Uh oh, "throw" an error
+            throw "Not found";
+          }
+      },
+
       // forum thread requests *******************************************************************
 
       // get all forum threads (sorted) by likes

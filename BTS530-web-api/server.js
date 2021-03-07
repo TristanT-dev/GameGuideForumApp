@@ -282,7 +282,7 @@ app.put("/api/game-guides/edit/:id", passport.authenticate('jwt', { session: fal
 });
 
 // Update existing - add a new game guide comment
-app.put("/api/game-guides/edit/:id/add-comment", (req, res) => {
+app.post("/api/game-guides/:id/add-comment", (req, res) => {
   // Call the manager method
   m.gameGuideAddComment(req.params.id, req.body)
     .then((data) => {
@@ -297,6 +297,18 @@ app.put("/api/game-guides/edit/:id/add-comment", (req, res) => {
 app.put("/api/game-guides/edit-comment/:id", (req, res) => {
   // Call the manager method
   m.gameGuideEditComment(req.params.id, req.body)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch(() => {
+      res.status(404).json({ "message": "Resource not found" });
+    })
+});
+
+// Delete a comment for a commentGuide
+app.delete("/api/game-guides/delete-comment/:id", (req, res) => {
+  // Call the manager method
+  m.commentGuideDeleteComment(req.params.id)
     .then((data) => {
       res.json(data);
     })

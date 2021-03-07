@@ -90,7 +90,30 @@
 <dt>Was this helpful?</dt>
 <dd><button class = "btn btn-default">Yes <span class = "badge badge-light"></span></button>
    &nbsp; <button class = "btn btn-default">No <span class = "badge badge-light"></span></button></dd>
-<button type="button" style = margin-left:40%>View Comments (16)</button>
+
+   <div *ngIf="this.showAllComment === true">
+    <div *ngFor="let item of guide.comments" class="commentBoxContainer">
+      <div style="width: 100%;">
+        <div class="commentBoxAuthor">
+          {{item.author}}
+        </div>
+        <div class="commentBoxCommentSec">
+          {{item.content}}
+        </div>
+      </div>
+      <div id="{{item._id}}" class="removeCross" (click)="handleCommentDelete($event)" *ngIf="a.currentUser() === item.author">
+        &#x2718;
+      </div>
+    </div>
+   </div>
+<button type="button" style = margin-left:40%;cursor:pointer (click)="handleShowComments()">
+  <p *ngIf="this.showAllComment === true" style="margin: 0;">
+    Hide All Comments    
+  </p>
+  <p *ngIf="this.showAllComment === false" style="margin: 0;">
+    View All Comments    
+  </p>
+</button>
 
 <div id="comments"><a name = "comments"></a>
 <br>
@@ -98,9 +121,21 @@
   
     
       <label for="comment" class="required">Your message</label>
-      <textarea name="comment" id="comment" rows="10" tabindex="4"  required="required"></textarea>
-  
-      <button type="button" >Submit Comment</button>
+      <textarea name="comment" id="comment" rows="10" tabindex="4"  required="required" [(ngModel)]="guideComment.content" #content="ngModel"></textarea>
+
+      <div class="loginMessage">
+        <p  class='alert alert-danger' *ngIf="this.emptyComment === true">
+          Comment Box is Empty!
+        </p>
+        <p  class='alert alert-danger' *ngIf="this.commentUploadStatus === false">
+          Comment Submit Failed!
+        </p>
+        <p   class='alert alert-success' *ngIf="this.commentUploadStatus === true">
+          Comment Submit Successfully!
+        </p>
+      </div>
+
+      <button type="button" (click)="onSave()">Submit Comment</button>
 
   
   

@@ -90,6 +90,17 @@ export class DataModelManagerService {
       
   }
 
+  apiGameGuideAddComment(id: string, newGuideComment: ApiGuideComment): Observable<ApiGuideComment> {
+    return this.http.post<ApiGuideComment>(`${this.urlApi}/game-guides/${id}/add-comment`, newGuideComment, this.httpOptions)
+      .pipe(
+        tap((newGuideComment: ApiGuideComment) => console.log(`Added game guide `,{newGuideComment})),
+        catchError(this.handleError<ApiGuideComment>('Comment add'))
+      );
+  }
+
+  apiCommentGuideDeleteComment(id: string): Observable<ApiGuideComment> {
+    return this.http.delete<ApiGuideComment>(`${this.urlApi}/game-guides/delete-comment/${id}`);
+  }
 
  
 
