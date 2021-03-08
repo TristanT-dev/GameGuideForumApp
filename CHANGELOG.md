@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.0.9] - 2021-03-08
+
+### **Added**
+- Created a branch [devt3](https://github.com/SenecaCollegeBTSProjects/Group_20/tree/devt3) from master by [@tristant-dev](https://github.com/tristant-dev)
+### **Changed**
+- Front-end HTML and Typescript to accurately display API CRUD operations
+
 ## [0.0.8] - 2021-02-22
 
 
