@@ -1,6 +1,23 @@
 input[type=search] {
-    -webkit-appearance: none;
-  }
+  -webkit-appearance: none;
+}
 input[type=search]::-webkit-search-cancel-button {
-    -webkit-appearance: searchfield-cancel-button;
+  -webkit-appearance: searchfield-cancel-button;
+}
+
+.darkBlueColor {
+color: #004b70;
+}
+
+.darkBlueBGColor {
+background-color: #004b70;
+}
+
+#search:focus,
+#search:focus+span button {
+  border-color: #004b70 !important;
+}
+
+.searchIcon {
+  color: #004b70;
 }

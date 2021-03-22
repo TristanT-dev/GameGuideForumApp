@@ -1,11 +1,15 @@
-.w3-sidebar {
-    z-index: 1;
-    width: 250px;
-    top: 54px;
-    bottom: 0;
-    height: inherit;
-    position: sticky;
+.darkBlueColor {
+  color: #004b70;
 }
+
+.darkBlueBGColor {
+  background-color: #004b70;
+}
+
+.commentsSection:hover {
+  cursor: pointer;
+}
+
 html,body,h1,h2,h3,h4,h5,h6,p {font-family: "Roboto", sans-serif;}
   
   .p{
@@ -77,7 +81,8 @@ html,body,h1,h2,h3,h4,h5,h6,p {font-family: "Roboto", sans-serif;}
 
 .commentBoxAuthor {
   font-size: 13px;
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  color: #004b70;
   margin-bottom: 8px;
 }
 

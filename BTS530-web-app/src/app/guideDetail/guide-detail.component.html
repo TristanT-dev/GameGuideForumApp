@@ -1,5 +1,100 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-between">
+        <h3 class="font-weight-bold">{{ guide.fullTitle }}</h3>
+        <button class="btn shadow-none font-weight-bold text-white darkBlueBGColor" type="button"
+          routerLink="/game-guides/edit/{{guide._id}}">
+          <i class="fa fa-edit"></i>
+        </button>
+      </div>
+      <h6>by <span class="darkBlueColor font-weight-bold">{{ guide.author }}</span></h6>
+      <hr>
+      <div>
+        <i class="fa fa-clock-o" aria-hidden="true"> Posted on {{ guide.dateCreated | date: 'medium' }}</i>
+      </div>
+      <div>
+        <i class="fa fa-edit" aria-hidden="true"> Updated on {{ guide.dateUpdated | date: 'medium' }}</i>
+      </div>
+      <hr>
+      <div id="carouselExampleIndicators" class="carousel slide mt-5" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item" *ngFor='let picture of guide.images let i = index' [ngClass]="{'active': i == 0 }">
+            <img class="d-block w-100" src={{picture}} alt="First slide">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <section>
+        <h5 class="mt-4 font-weight-bold">{{ guide.shortTitle }} <span class="badge darkBlueBGColor text-white ml-2">v{{
+            guide.patch
+            }}</span><span class="badge darkBlueBGColor text-white ml-2">{{ guide.category
+            }}</span></h5>
+        <h6>{{ guide.description }}</h6>
+        <p class="mt-4 font-weight-bold">{{ guide.content }}</p>
+      </section>
+      <div class="card mt-5">
+        <div class="d-flex justify-content-between commentsSection" data-toggle="collapse" data-target="#demo">
+          <h3 class="font-weight-bold m-3">Comments</h3>
+          <i class="fa fa-caret-down align-self-center m-3" aria-hidden="true"></i>
+        </div>
+        <div id="demo" class="collapse m-3">
+          <div *ngFor="let item of guide.comments" class="commentBoxContainer">
+            <div style="width: 100%;">
+              <div class="commentBoxAuthor">
+                {{item.author}}
+              </div>
+              <div class="commentBoxCommentSec">
+                {{item.content}}
+              </div>
+            </div>
+            <div id="{{item._id}}" class="removeCross" (click)="handleCommentDelete($event)"
+              *ngIf="a.currentUser() === item.author">
+              &#x2718;
+            </div>
+          </div>
+          <div id="comments"><a name="comments"></a>
+            <br>
+            <h3>Leave a Comment</h3>
 
-  
+            <label for="comment" class="required">Your message</label>
+            <textarea name="comment" id="comment" rows="10" tabindex="4" required="required"
+              [(ngModel)]="guideComment.content" #content="ngModel"></textarea>
+
+            <div class="loginMessage">
+              <p class='alert alert-danger' *ngIf="this.emptyComment === true">
+                Comment Box is Empty!
+              </p>
+              <p class='alert alert-danger' *ngIf="this.commentUploadStatus === false">
+                Comment Submit Failed!
+              </p>
+              <p class='alert alert-success' *ngIf="this.commentUploadStatus === true">
+                Comment Submit Successfully!
+              </p>
+            </div>
+            <button class="btn shadow-none font-weight-bold text-white darkBlueBGColor" type="button"
+              (click)="onSave()">
+              <i class="fa fa-comment"> Comment</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!--Tristan put your custom html here and use the one way data binding to display the information ---->
 
 <!--
@@ -17,130 +112,3 @@
 <p>{{guide.description}}</p>
 <p>{{guide.content}}</p>
 -->
-
-<!--Use this button to go to edit game guide component feel free to change the style/look/placement of it-->
-
-
-<title>Game Guide Prototype</title>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
-<div class="w3-main" style="margin-left:50px">
-
-  <!-- carousel-->
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item" *ngFor='let picture of guide.images let i = index' [ngClass]="{'active': i == 0 }">
-        <img class="d-block w-100" src={{picture}} alt="First slide">
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-  <!--end carousel-->
-
-  <script>
-    jQuery(document).ready(function() {
-      $(".carousel-indicator li:first").addClass("active");
-      $(".carousel-inner .item:first").addClass("active");
-    });
-  </script>
-    
-    <div class="w3-row"></div>
-     
-          <h1 class="w3-text-black">{{guide.fullTitle}}</h1>
-          <p class="w3-text-gray">Author: {{guide.author}} &nbsp;  &nbsp; &nbsp; Date: {{guide.dateCreated}} 
-              <br><br>Date Revised: {{guide.dateUpdated}} </p>
-          <div *ngIf="a.currentUser() === guide.author">
-          <button class="btn btn-primary" routerLink="/game-guides/edit/{{guide._id}}">Edit Guide</button>
-          </div>
-        <hr>
-  <div class="w3-row">
-      <h2 class="w3 text-black">Overview</h2>
-      <h4>Short Title: {{guide.shortTitle}}&nbsp; &nbsp; &nbsp;Patch: {{guide.patch}}&nbsp; &nbsp; &nbsp;Category: {{guide.category}}</h4>
-      <hr>
-  <div class="w3-row">
-    <div class="w3" id ='intro'><a name='intro'></a>
-      <h2 class="w3-text-black">Description</h2>
-    </div>
-    <h3>{{guide.description}}</h3>
-  </div>
-<hr>
-<div class="w3-row w3-padding-50" ng-repeat="item in items">
-  <h2 class="w3-text-black">Content </h2>
-    <h3>{{guide.content}}</h3>
- </div>
-</div>
-<hr>
-
-<dt>Was this helpful?</dt>
-<dd><button class = "btn btn-default">Yes <span class = "badge badge-light"></span></button>
-   &nbsp; <button class = "btn btn-default">No <span class = "badge badge-light"></span></button></dd>
-
-   <div *ngIf="this.showAllComment === true">
-    <div *ngFor="let item of guide.comments" class="commentBoxContainer">
-      <div style="width: 100%;">
-        <div class="commentBoxAuthor">
-          {{item.author}}
-        </div>
-        <div class="commentBoxCommentSec">
-          {{item.content}}
-        </div>
-      </div>
-      <div id="{{item._id}}" class="removeCross" (click)="handleCommentDelete($event)" *ngIf="a.currentUser() === item.author">
-        &#x2718;
-      </div>
-    </div>
-   </div>
-<button type="button" style = margin-left:40%;cursor:pointer (click)="handleShowComments()">
-  <p *ngIf="this.showAllComment === true" style="margin: 0;">
-    Hide All Comments    
-  </p>
-  <p *ngIf="this.showAllComment === false" style="margin: 0;">
-    View All Comments    
-  </p>
-</button>
-
-<div id="comments"><a name = "comments"></a>
-<br>
-    <h3>Leave a Comment</h3>
-  
-    
-      <label for="comment" class="required">Your message</label>
-      <textarea name="comment" id="comment" rows="10" tabindex="4"  required="required" [(ngModel)]="guideComment.content" #content="ngModel"></textarea>
-
-      <div class="loginMessage">
-        <p  class='alert alert-danger' *ngIf="this.emptyComment === true">
-          Comment Box is Empty!
-        </p>
-        <p  class='alert alert-danger' *ngIf="this.commentUploadStatus === false">
-          Comment Submit Failed!
-        </p>
-        <p   class='alert alert-success' *ngIf="this.commentUploadStatus === true">
-          Comment Submit Successfully!
-        </p>
-      </div>
-
-      <button type="button" (click)="onSave()">Submit Comment</button>
-
-  
-  
-  </div>
-    
-</div>
-
-

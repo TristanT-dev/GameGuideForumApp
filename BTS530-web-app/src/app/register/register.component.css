@@ -1,0 +1,44 @@
+.infoSection {
+    background-color: #3586BD;
+}
+
+.infoText {
+    font-weight: 300;
+}
+
+.haveAnAccountBtn {
+    background-color: white;
+    font-weight: bold;
+    color: #504f4f;
+    transition: background-color 0.2s;
+}
+
+
+.haveAnAccountBtn:hover,
+.haveAnAccountBtn:active:focus {
+    background-color: rgb(49, 49, 49);
+    color: white;
+}
+
+.title {
+    font-weight: bold;
+}
+
+#registerTitle {
+    color: #3586BD;
+}
+
+label {
+    font-weight: bold;
+    color: #686868;
+}
+
+input {
+    box-shadow: none !important;
+}
+
+.registerBtn {
+    background-color: #3586BD;
+    font-weight: bold;
+    color: white;
+}

@@ -1,44 +1,187 @@
 <div class="container" *ngIf="a.currentUser() === '' else welcomeuser">
-  
-  <h1>Welcome</h1>
+  <!-- First Section (News) -->
 
-  <p>Please <a routerLink="/login">sign in</a> or <a routerLink="/register">register</a></p>
-  
+  <section style="border-top: #006FA6 4px solid;">
+    <div class="container-fluid mt-2">
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex flex-nowrap text-truncate" style="overflow: auto; background-color: #DBF0F8;">
+            <a [routerLink]="['']" class="newsSectionTab selected px-sm-2 px-1">Newsroom</a>
+            <a [routerLink]="['']" class="newsSectionTab px-sm-2 px-1">News</a>
+            <a [routerLink]="['']" class="newsSectionTab px-sm-2 px-1">Game Comics</a>
+            <a [routerLink]="['']" class="newsSectionTab px-sm-2 px-1">Breaking News</a>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-lg-4 col-md-6 col-12">
+          <a [routerLink]="['/']" class="newsCard">
+            <div class="newsImgContainer">
+              <img src="https://www.gamepressure.com/i/h/17/563083750.jpg" class="img-fluid" alt="">
+              <div class="newsPill ml-2">
+                <span class="badge pill">NEWS</span>
+              </div>
+            </div>
+            <h5 class="mt-2 font-weight-bold text-dark">Blizzard Lays Off More Employees</h5>
+            <p class="mt-2 text-dark" style="line-height: 1;">Activison Blizzard has taken quite drastic actions in
+              recent days,
+              laying off at least a few dozen people.
+              This has to do, among other things, with changing the formula for organizing events and e-sports
+              tournaments.</p>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-6">
+              <a [routerLink]="['/']" class="newsCard">
+                <div class="newsImgContainer">
+                  <img src="https://www.gamepressure.com/i/h/10/562952796.jpg" class="img-fluid" alt="">
+                  <div class="newsPill ml-2">
+                    <span class="badge pill">NEWS</span>
+                  </div>
+                </div>
+                <h6 class="mt-2 font-weight-bold text-dark text-center">Crysis Remastered Patch Fixes DLSS</h6>
+              </a>
+            </div>
+            <div class="col-lg-12 col-md-12 col-6">
+              <a [routerLink]="['/']" class="newsCard">
+                <div class="newsImgContainer">
+                  <img src="https://www.gamepressure.com/i/h/10/471450359.jpg" class="img-fluid" alt="">
+                  <div class="newsPill ml-2">
+                    <span class="badge pill">NEWS</span>
+                  </div>
+                </div>
+                <h6 class="mt-2 font-weight-bold text-dark text-center">Stellaris: Nemesis Expansion Release Date</h6>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 col-12">
+          <h4 class="font-weight-bold" style="color: #006FA6;">Latest News</h4>
+          <ul>
+            <li>
+              <a [routerLink]="['']" class="latestNewsLink">
+                Sony Reveals 10 More Free Play at Home Games, Including Horizon Zero Dawn
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['']" class="latestNewsLink">
+                Dying Light 2 Launch in 2021; Update and Trailer Available
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['']" class="latestNewsLink">
+                First Reviews: Radeon RX 6700 XT - Good, but Too Expensive
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['']" class="latestNewsLink">
+                Disco Elysium The Final Cut Launches on March 30; New Trailer Available
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['']" class="latestNewsLink">
+                Satisfactory Update 4 Adds Some Exciting New Features
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['']" class="latestNewsLink">
+                New Single-player FPS Developed for Warhammer 40K Universe
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['']" class="latestNewsLink">
+                Doom Eternal The Ancient Gods 2 Trailer; DLC Launch Tomorrow
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['']" class="latestNewsLink">
+                EA Play in Xbox Game Pass on PC Launching on March 18
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['']" class="latestNewsLink">
+                New Information on Age of Empires 4 in April [UPDATED]
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-lg-3 col-6">
+          <a [routerLink]="['/']" class="newsCard">
+            <div class="newsImgContainer">
+              <img src="https://www.gamepressure.com/i/h/10/471450359.jpg" class="img-fluid" alt="">
+              <div class="newsPill ml-2">
+                <span class="badge pill">NEWS</span>
+              </div>
+            </div>
+            <h6 class="mt-2 font-weight-bold text-dark text-center">Stellaris: Nemesis Expansion Release Date</h6>
+          </a>
+        </div>
+        <div class="col-lg-3 col-6">
+          <a [routerLink]="['/']" class="newsCard">
+            <div class="newsImgContainer">
+              <img src="https://www.gamepressure.com/i/h/10/471450359.jpg" class="img-fluid" alt="">
+              <div class="newsPill ml-2">
+                <span class="badge pill">NEWS</span>
+              </div>
+            </div>
+            <h6 class="mt-2 font-weight-bold text-dark text-center">Stellaris: Nemesis Expansion Release Date</h6>
+          </a>
+        </div>
+        <div class="col-lg-3 col-6">
+          <a [routerLink]="['/']" class="newsCard">
+            <div class="newsImgContainer">
+              <img src="https://www.gamepressure.com/i/h/10/471450359.jpg" class="img-fluid" alt="">
+              <div class="newsPill ml-2">
+                <span class="badge pill">NEWS</span>
+              </div>
+            </div>
+            <h6 class="mt-2 font-weight-bold text-dark text-center">Stellaris: Nemesis Expansion Release Date</h6>
+          </a>
+        </div>
+        <div class="col-lg-3 col-6">
+          <a [routerLink]="['/']" class="newsCard">
+            <div class="newsImgContainer">
+              <img src="https://www.gamepressure.com/i/h/10/471450359.jpg" class="img-fluid" alt="">
+              <div class="newsPill ml-2">
+                <span class="badge pill">NEWS</span>
+              </div>
+            </div>
+            <h6 class="mt-2 font-weight-bold text-dark text-center">Stellaris: Nemesis Expansion Release Date</h6>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- First Section (News) -->
 </div>
 <ng-template #welcomeuser>
   <div class="container">
-  
-    <h1>Welcome {{a.currentUser()}}</h1> &nbsp;
-    <h2>Here is a list of your guides:</h2> &nbsp;
-  
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Short Title</th>
-          <th>Description</th>
-          <th>Category</th>
-          <th>Date Updated</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor='let g of guides'>
-          <td>{{ g.shortTitle }}</td>
-          <td>{{ g.description }}</td>
-          <td>{{ g.category }}</td>
-          <td>{{ g.dateUpdated }}</td>
-          <td>
-            <a routerLink = "/game-guides/detail/{{g._id}}" class="btn btn-default">View</a>
-          </td>
-        </tr>
-        <tr *ngIf='guides == null || guides.length == 0'>
-            <td>No Results</td>
-        </tr>
-      </tbody>
-    </table>
-    
+
+    <h3 class="font-weight-bold">Welcome,<span class="darkBlueColor"> {{a.currentUser()}}</span></h3>
+
+    <div class="row mt-4">
+      <div class="col-12 mb-5" *ngFor='let g of guides'>
+        <h6 class="font-weight-bold">{{ g.shortTitle }} <span class="badge ml-2 text-white darkBlueBGColor">
+            {{g.category}}
+          </span><span class="badge ml-2 text-white darkBlueBGColor">{{ g.rating }} <i class="fa fa-star"
+              aria-hidden="true"></i></span></h6>
+
+        <!-- <small>By <span class="font-weight-bold darkBlueColor">{{ g.author }}</span></small> -->
+
+        <p class="mt-3 text-muted">{{ g.description }}</p>
+        <div class="d-flex">
+          <a class="btn ml-auto shadow-none font-weight-bold text-white darkBlueBGColor"
+            routerLink="/game-guides/detail/{{g._id}}" role="button">View Guide <i class="ml-2 fa fa-arrow-right"
+              aria-hidden="true"></i></a>
+        </div>
+        <hr>
+      </div>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf='guides == null || guides.length == 0'>
+      There are no guides created!
+    </div>
   </div>
 </ng-template>
-
-
-

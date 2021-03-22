@@ -1,8 +1,51 @@
 .active {
-  background-color: grey;
+  background-color: #2f0326;
+}
+
+.IMG {
+  background-image: url('../../assets/images/header-bg.jpg');
+  min-height: 130px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  position: relative;
+}
+
+.IMG h1,
+nav h1 {
+  font-weight: bolder;
+  color: red;
+}
+
+.IMG h1 {
+  position: absolute;
+  bottom: 10px;
+  left: 30px;
+  width: 350px;
+}
+
+.navbar-nav {
+  width: 100%;
+  background-color: #420334;
+  font-weight: bold;
+}
+
+.nav-item:hover {
+  background-color: #2f0326;
+}
+
+.nav-link {
   color: white !important;
 }
 
-#navbar {
-  margin-bottom: 2%;
+@media all and (max-width: 990px) {
+  .IMG {
+      background-image: none !important;
+      min-height: 0;
+      height: auto;
+  }
+  .navbar {
+    background-color: black;
+  }
 }

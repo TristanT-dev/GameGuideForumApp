@@ -1,3 +1,36 @@
 #singleImageUrl{
     margin-bottom: 10px;
 }
+
+label {
+    font-weight: bold;
+    color: #686868;
+}
+
+input,
+select {
+    box-shadow: none !important;
+}
+
+.darkBlueColor {
+    color: #004b70;
+}
+
+.darkBlueBGColor {
+    background-color: #004b70;
+    color: white;
+    font-weight: bold;
+}
+
+.createBtn {
+    background-color: #004b70;
+    color: white;
+    font-weight: bold;
+}
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+}
+  
+.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+}

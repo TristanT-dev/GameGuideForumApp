@@ -1,0 +1,65 @@
+/* First Section (News) */
+
+.newsSectionTab {
+    padding: 5px 0px;
+    color: white;
+    background-color: #006fa6;
+    margin: 0 1px;
+}
+
+.newsSectionTab.selected {
+    background-color: #004b70;
+}
+
+.newsSectionTab:hover,
+.newsSectionTab:hover a {
+    text-decoration: none;
+    background-color: #FFCC00;
+    color: black;
+}
+
+.newsCard {
+    text-decoration: none;
+}
+
+.newsCard:hover img {
+    opacity: 0.8;
+}
+
+.newsImgContainer {
+    position: relative;
+}
+
+.newsPill {
+    position: absolute;
+    bottom: 5px;
+}
+
+.newsPill .pill {
+    background-color: #006FA6;
+    color: white;
+}
+
+.latestNewsLink {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.latestNewsLink:hover {
+    color: chocolate;
+}
+
+/* First Section (News) */
+
+/* Guide's List */
+
+.darkBlueColor {
+    color: #004b70;
+}
+
+.darkBlueBGColor {
+    background-color: #004b70;
+}
+
+/* Guide's List */

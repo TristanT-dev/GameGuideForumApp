@@ -1,36 +1,48 @@
-<div class="row">
-    <p>&nbsp;</p>
-    <label for="search"><strong>List of Game Guides - search by short title...</strong></label>
-    <input type="search" id="search" name="search"  minlength="3" maxlength="100" (click)="clear()" (ngModelChange)="doSearch()" [(ngModel)]="searchTerm">
-    &nbsp;
-    &nbsp;<div *ngIf='searchTerm.length<3 && searchTerm.length>0'>Search title must be at least 3 characters</div>
-    &nbsp;&nbsp;<button class="btn btn-primary" routerLink="/game-guides/add">Create New Guide</button>
-    
-</div>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col">
+      <div class="d-flex justify-content-between">
+        <h3 class="font-weight-bold darkBlueColor">Game Guides</h3>
+        <button class="btn shadow-none font-weight-bold text-white darkBlueBGColor" type="button"
+          routerLink="/game-guides/add">
+          <i class="fa fa-plus mr-2"></i> Create Guide
+        </button>
+      </div>
+      <div class="input-group col-lg-4 col-md-6 col-12 ml-auto px-0 mt-3">
+        <input autocomplete="off" class="form-control py-2 shadow-none border-right-0 border" type="search"
+          placeholder="Search by short title" id="search" name="search" minlength="3" maxlength="100"
+          (ngModelChange)="doSearch()" [(ngModel)]="searchTerm">
 
-<p>&nbsp;</p>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Short Title</th>
-      <th>Description</th>
-      <th>Author</th>
-      <th>Rating</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor='let g of guides'>
-      <td>{{ g.shortTitle }}</td>
-      <td>{{ g.description }}</td>
-      <td>{{ g.author }}</td>
-      <td>{{ g.rating }}</td>
-      <td>
-        <a routerLink = "/game-guides/detail/{{g._id}}" class="btn btn-default">View</a>
-      </td>
-    </tr>
-    <tr *ngIf='guides == null || guides.length == 0'>
-        <td>No Results</td>
-    </tr>
-  </tbody>
-</table>
+        <span class="input-group-append">
+          <button class="btn shadow-none border-left-0 border" type="button">
+            <i class="fa fa-search searchIcon"></i>
+          </button>
+        </span>
+      </div>
+      <div class="d-flex" *ngIf='searchTerm.length<3 && searchTerm.length>0'>
+        <p class="ml-auto">Search title must be at least 3 characters</p>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-12 mb-5" *ngFor='let g of guides'>
+      <h6 class="font-weight-bold">{{ g.shortTitle }} <span class="badge ml-2 text-white darkBlueBGColor">{{ g.category
+          }}</span></h6>
+
+      <small>By <span class="font-weight-bold darkBlueColor">{{ g.author }}<span
+            class="badge ml-2 text-white darkBlueBGColor">{{ g.rating }} <i class="fa fa-star"
+              aria-hidden="true"></i></span></span></small>
+
+      <p class="mt-3 text-muted">{{ g.description }}</p>
+      <div class="d-flex">
+        <a class="btn ml-auto shadow-none font-weight-bold text-white darkBlueBGColor"
+          routerLink="/game-guides/detail/{{g._id}}" role="button">View Guide <i class="ml-2 fa fa-arrow-right"
+            aria-hidden="true"></i></a>
+      </div>
+      <hr>
+    </div>
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf='guides == null || guides.length == 0'>
+    You haven't created any guides yet!
+  </div>
+</div>
