@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+
+## [0.1.0] - 2021-03-022
+
+### **Changed**
+- Pushed new code onto branch[devt3](https://github.com/SenecaCollegeBTSProjects/Group_20/tree/devt3) from master by [@tristant-dev](https://github.com/tristant-dev)
+- Added addtional code to front-end components. for more responsive site.
+- Changed Issue to accurately depict sprint 4 activity.
+
 ## [0.0.9] - 2021-03-08
 
 ### **Added**
